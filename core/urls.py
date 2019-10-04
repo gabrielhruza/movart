@@ -7,9 +7,10 @@ app_name = 'core'
 
 urlpatterns = [
 
+	path("logout/", auth_views.LogoutView.as_view(), name="logout"),
 	path("", views.home, name="home"),
 	path("login/", views.login, name="login"),
 	path("privacy/", views.privacy, name="privacy"),
-	path("logout/", auth_views.LogoutView.as_view(), name="logout"),
+	path("actualizar_perfil/", views.actualizar_perfil, name="actualizar_perfil"),
 
 ]
