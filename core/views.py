@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Perfil
 from .forms  import PerfilForm       
@@ -35,10 +35,12 @@ def verificar_perfil(request):
 
 
 def actualizar_perfil(request):
+	perfil = Perfil.objects.get(usuario=request.user)
 	if request.method == 'POST':
-		form = PerfilForm(request.POST)
+		form = PerfilForm(request.POST,instance=perfil)
 		if form.is_valid():
-			pass  # does nothing, just trigger the validation
+			form.save()
+			return redirect('/')
 	else:
-		form = PerfilForm()
+		form = PerfilForm(instance=perfil)
 	return render(request, 'core/perfiled.html', {'form': form})

@@ -33,11 +33,21 @@
       </li>
 
       {% if user.is_authenticated %}
-      <li class="nav-item">
-          <a class="nav-link" href="#">{{ request.user.username }}</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ request.user.username }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="nav-link" href="{% url 'core:actualizar_perfil' %}">
+            <i class="fa fa-user"></i> Mis Datos
+          </a>
+          <a class="nav-link" href="{% url 'core:logout' %}">
+            <i class="fa fa-sign-out-alt"> </i>Salir
+          </a>
+        </div>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="{% url 'core:logout' %}"><i class="fa fa-sign-out-alt"></i></a>
+          
       </li>
       {% else %}
       <li class="nav-item">
