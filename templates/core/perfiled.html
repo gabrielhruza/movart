@@ -1,0 +1,103 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}{% endblock %}
+{% block content %}
+
+<div class="container">
+
+<div class="mb-3">
+	<h3>Completa el formulario</h3>
+</div>
+
+{% if messages %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+	<div class="header">
+		Existen errores en el formulario
+		</div>
+	<ul class="list">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+	</ul>
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    	<span aria-hidden="true">&times;</span>
+  	</button>
+</div>
+{% endif %}
+
+<form method="post" class="ui form {% if form.errors %}error{% endif %}" novalidate>
+{% csrf_token %}
+
+<div class="card">
+	<div class="row">
+	
+	<aside class="col-sm-5 text-center mt-3">
+	<img class="img-fluid w-50 rounded-circle" src="{{ form.instance.url_profile_picture }}" alt="card image">
+	</aside>
+
+	<aside class="col-sm-7">
+
+	<article class="card-body p-5">	
+	<div class="form-group row"> 
+		<label class="col-sm-3 col-form-label">Foto Perfil:</label>
+		<div class="col-sm-9">
+			{% render_field form.url_profile_picture class+="form-control" %}
+		{% if form.url_profile_picture.errors %}
+	    	<div class="text-danger">
+	    		{{ form.url_profile_picture.errors }}
+	    	</div>
+	    {% endif %}
+	    </div>
+	</div>
+
+	<div class="form-group row"> 
+		<label class="col-sm-3 col-form-label">Domicilio:</label>
+		<div class="col-sm-9">
+			{% render_field form.domicilio class+="form-control" placeholder=form.domicilio.label %}
+		{% if form.domicilio.errors %}
+	    	<div class="text-danger">
+	    		{{ form.domicilio.errors }}
+	    	</div>
+	    {% endif %}
+	    </div>
+	</div>
+
+	<div class="form-group row"> 
+		<label class="col-sm-3 col-form-label">Teléfono:</label>
+		<div class="col-sm-9">
+			{% render_field form.telefono class+="form-control" placeholder=form.telefono.label%}
+		{% if form.telefono.errors %}
+	    	<div class="text-danger">
+	    		{{ form.telefono.errors }}
+	    	</div>
+	    {% endif %}
+	    </div>
+	</div>
+
+	<div class="form-group row"> 
+		<label class="col-sm-3 col-form-label">Descripción:</label>
+		<div class="col-sm-9">
+			{% render_field form.descripcion class+="form-control" placeholder=form.descripcion.label%}
+		{% if form.descripcion.errors %}
+	    	<div class="text-danger">
+	    		{{ form.descripcion.errors }}
+	    	</div>
+	    {% endif %}
+	    </div>
+	</div>
+
+	<div class="text-center">
+		<button type="submit" class="btn btn-warning text-uppercase"> Enviar </a>
+		<!--	<a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to cart </a>-->
+	</div>
+
+	</article> <!-- card-body.// -->
+	</aside> <!-- col.// -->
+	</div> <!-- row.// -->
+</div> <!-- card.// -->
+</form>
+
+</div>
+
+{% endblock %}

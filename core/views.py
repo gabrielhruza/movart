@@ -1,14 +1,14 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import Perfil
-from .form  import PerfilForm		
+from .forms  import PerfilForm       
 
 
 def home(request):
-    return render(request, 'core/home.html')
+	return render(request, 'core/home.html')
 
 def login(request):
-    return render(request, 'core/login.html')
+	return render(request, 'core/login.html')
 
 def privacy(request):
 	return render(request, 'core/privacy.html')
@@ -36,9 +36,9 @@ def verificar_perfil(request):
 
 def actualizar_perfil(request):
 	if request.method == 'POST':
-        form = PerfilForm(request.POST)
-        if form.is_valid():
-            pass  # does nothing, just trigger the validation
-    else:
-        form = PerfilForm()
- #    return render(request, 'home.html', {'form': form})
+		form = PerfilForm(request.POST)
+		if form.is_valid():
+			pass  # does nothing, just trigger the validation
+	else:
+		form = PerfilForm()
+	return render(request, 'core/perfiled.html', {'form': form})
