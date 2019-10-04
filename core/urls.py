@@ -8,7 +8,6 @@ app_name = 'core'
 urlpatterns = [
 
 	path("", views.home, name="home"),
-	path("ig/", views.ig, name="ig"),
 	path("login/", views.login, name="login"),
 	path("privacy/", views.privacy, name="privacy"),
 	path("logout/", auth_views.LogoutView.as_view(), name="logout"),
