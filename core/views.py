@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
+import requests
 
 
 def home(request):
@@ -11,3 +11,6 @@ def login(request):
 
 def privacy(request):
 	return render(request, 'core/login.html')
+
+def ig(request):
+	return render(request, 'core/ig.html')
