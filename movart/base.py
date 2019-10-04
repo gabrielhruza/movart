@@ -132,6 +132,6 @@ AUTHENTICATION_BACKENDS = (
 
 LOGIN_URL = 'core:login'
 LOGOUT_URL = 'core:logout'
-LOGIN_REDIRECT_URL = 'core:home'
+LOGIN_REDIRECT_URL = 'core:verificar_perfil'
 LOGIN_ERROR_URL = 'core:login'
 LOGOUT_REDIRECT_URL = 'core:home'
