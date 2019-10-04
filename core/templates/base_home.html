@@ -19,7 +19,7 @@
     <div class="container-fluid">
         {% block content %}{% endblock %}
     </div>
-    {% block footer %}{% endblock %}
+    {% block footer %}{% include 'core/footer.html' %}{% endblock %}
 
     {% block scripts %}
         <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
