@@ -1,6 +1,8 @@
 # settings.py
 from .base import *
 
+SECURE_SSL_REDIRECT = True
+
 # Database
 
 import dj_database_url
