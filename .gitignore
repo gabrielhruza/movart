@@ -1,2 +1,4 @@
 
 *.pyc
+movart/local.py
+db.sqlite3
