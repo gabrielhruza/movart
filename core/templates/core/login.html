@@ -1,0 +1,28 @@
+<!-- templates/login.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}  {% endblock %}
+{% block content %}
+<div class="login">
+<div class="row justify-content-md-center">
+    <div class="col col-lg-2"></div>
+    
+    <div class="col-md-auto card">
+        <div class="text-center card-body">
+            <div class="form-signin">
+              <img src="{% static 'img/logo.png' %}" width="200" class="d-inline-block align-top">
+              <p></p>
+              <a href="{% url 'social:begin' 'instagram' %}" class="btn btn-instagram active" role="button" aria-pressed="true">
+                Loguearse con Instagram
+              </a>
+            </br></br>
+              <a class="item" href="{% url 'core:privacy' %}">Políticas de privacidad</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col col-lg-2"></div>
+</div>
+</div>
+{% endblock %}
