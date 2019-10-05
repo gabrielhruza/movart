@@ -1,0 +1,24 @@
+{% extends "base/base.html" %}
+
+{% block body_class %}{{ block.super }} pinax-messages-create{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="pinax-messages-create-container">
+    <h3>Realizar Consulta</h3>
+
+    <form class="comment-form" action="{% url 'pinax_messages:message_create' %}" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="form-actions">
+            <a href="{% url 'pinax_messages:inbox' %}" class="btn btn-light">
+				<i class="fa fa-times"></i> Cancelar 
+			</a>
+            <button class="btn btn-primary"> 
+            	<i class="fa fa-envelope"></i> Consultar 
+			</button>        
+		</div>
+    </form>
+</div>
+{% endblock %}
