@@ -7,6 +7,9 @@ class Tienda(models.Model):
     usuario     = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,default=None) 
     estado      = models.PositiveIntegerField(default=1)
 
+    def catalogo(self):
+        return self.producto_set
+
 
 class Producto(models.Model):
     tienda = models.ForeignKey(Tienda, on_delete=models.CASCADE)

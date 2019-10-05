@@ -1,2 +1,6 @@
 prodlist.html
-{{prodlist}}
+{% for prod in prodlist.all %}
+	{{prod}}
+{% empty %}
+No hay productos agregados
+{% endfor %}
