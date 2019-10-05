@@ -5,7 +5,7 @@ from taggit.managers import TaggableManager
 
 class Tienda(models.Model):
     usuario     = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,default=None) 
-    publicada   = models.IntegerField(default=1)
+    estado      = models.PositiveIntegerField(default=1)
 
 
 class Producto(models.Model):

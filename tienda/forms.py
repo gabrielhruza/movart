@@ -1,7 +1,13 @@
 from django.forms import ModelForm
 from django import forms
 
-from .models import Producto
+from .models import Tienda, Producto
+
+
+class TiendaForm(ModelForm):
+	class Meta:
+		model = Tienda
+		fields = ['estado']
 
 
 class ProductoForm(ModelForm):

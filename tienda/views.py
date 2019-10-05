@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import ProductoForm
+from .models 	import Tienda
+from .forms 	import TiendaForm, ProductoForm
 
 
-def prodadd(request):
+def tiendadd(request):
 	if request.method == 'POST':
-		form = ProductoForm(request.POST)
+		form = TiendaForm(request.POST)
 		if form.is_valid():
 			try:
 				form.save()
@@ -14,5 +15,22 @@ def prodadd(request):
 			except Exception as e:
 				messages.error(request, e)
 	else:
-		form = ProductoForm()
-	return render(request, 'tienda/prodadd.html', {'form': form})
+		form = TiendaForm()
+	return render(request, 'tienda/tiendadd.html', {'form': form})
+
+
+
+# def prodadd(request, tienda):
+# 	if request.method == 'POST':
+# 		form = ProductoForm(request.POST)
+# 		if form.is_valid():
+# 			try:
+# 				form.save()
+# 				messages.success(request, 'Se ha realizado con éxito!')
+# 				return redirect('/')
+# 			except Exception as e:
+# 				messages.error(request, e)
+# 	else:
+# 		form = ProductoForm()
+# 	return render(request, 'tienda/prodadd.html', {'form': form})
+
