@@ -67,7 +67,13 @@ def prodedit(request, id):
 	return render(request, 'tienda/prodadd.html', {'form': form})
 
 
-def prodlist(request):
-	tienda 		= Tienda.objects.get(usuario=request.user)
-	prod_list 	= tienda.producto_set
+#inventario de productos de por tienda
+def prodlist(request, id):
+	prod_list = Producto.objects.filter(tienda=id)
+	return render(request, 'tienda/prodlist.html', {'prod_list': prod_list})
+
+
+#todos los productos de todas las tiendas
+def prodlistall(request):
+	prod_list 	= Producto.objects.all()
 	return render(request, 'tienda/prodlist.html', {'prod_list': prod_list})

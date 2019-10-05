@@ -11,6 +11,7 @@ urlpatterns = [
 	path("prod/<id>/ver/", views.prodver, name="prodver"),
 	path("prod/add/<url>/", views.prodadd, name="prodadd"),
 	path("prod/<id>/edit/", views.prodedit, name="prodedit"),
-	path("prod/list/", views.prodlist, name="prodlist"),
+	path("prod/<id>/list/", views.prodlist, name="prodlist"),
+	path("prod/list/", views.prodlistall, name="prodlistall"),
 
 ]
