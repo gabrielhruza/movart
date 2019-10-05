@@ -12,5 +12,6 @@ urlpatterns = [
 	path("prod/add/<url>/", views.prodadd, name="prodadd"),
 	path("prod/<id>/edit/", views.prodedit, name="prodedit"),
 	path("prod/list/", views.prodlist, name="prodlist"),
+	path("prod/<id>/cons/", views.prodcons, name="prodcons"),
 
 ]

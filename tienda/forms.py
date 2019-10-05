@@ -14,3 +14,7 @@ class ProductoForm(ModelForm):
 	class Meta:
 		model = Producto
 		fields = ['nombre', 'precio', 'etiquetas', 'descripcion']
+
+
+class ProdconsForm(forms.Form):
+	contenido = forms.CharField(label='Contenido', widget=forms.Textarea)

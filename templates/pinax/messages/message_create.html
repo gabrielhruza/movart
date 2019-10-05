@@ -8,7 +8,7 @@
 <div class="pinax-messages-create-container">
     <h3>Realizar Consulta</h3>
 
-    <form class="comment-form" action="{% url 'pinax_messages:message_create' %}" method="post">
+    <form class="comment-form" method="post">
         {% csrf_token %}
         {{ form|crispy }}
         <div class="form-actions">

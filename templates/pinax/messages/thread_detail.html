@@ -1,34 +1,42 @@
-{% extends "pinax/messages/base.html" %}
+{% extends "base/base.html" %}
 
 {% block body_class %}{{ block.super }} pinax-messages-thread{% endblock %}
 
-{% load bootstrap %}
+{% load crispy_forms_tags %}
 
-{% block body %}
+{% block content %}
 <div class="pinax-messages-thread-detail-container">
     <h2 class="with-actions">
         {{ thread.subject }}
-        <a class="button" href="{% url "pinax_messages:thread_delete" thread.pk %}">Delete Thread</a>
+        <a class="button" href="{% url 'pinax_messages:thread_delete' thread.pk %}">Delete Thread</a>
     </h2>
 
     <section class="thread-messages">
         {% for message in thread.messages.all %}
-            <div class="thread-message">
-                <div class="message-byline">
-                    <div class="message-from">{{ message.sender.username }}</div>
-                    <div class="message-sent">{{ message.sent_at }}</div>
-                </div>
-                <div class="message-content">{{ message.content|urlize|linebreaks }}</div>
+          <div class="rounded box-shadow">
+            <div class="media text-muted pt-3">
+              <img src="{{message.sender.perfil_set.all.0.url_profile_picture}}" alt="" class="mr-2 rounded-circle" width="48" height="48">
+              <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <strong class="d-block text-gray-dark">
+                    @{{ message.sender.username }}<small> {{ message.sent_at }}</small>
+                </strong>
+                {{ message.content }}
+              </p>
             </div>
+          </div>            
         {% endfor %}
     </section>
 
-    <form class="comment-form" action="{% url "pinax_messages:thread_detail" thread.pk %}" method="post">
+    <form class="comment-form" action="{% url 'pinax_messages:thread_detail' thread.pk %}" method="post">
         {% csrf_token %}
-        {{ form|bootstrap }}
+        {{ form|crispy }}
         <div class="form-actions">
-            <a href="{% url "pinax_messages:inbox" %}" class="cancel">Cancel</a>
-            <button>Send</button>
+            <a href="{% url 'pinax_messages:inbox' %}" class="btn btn-light">
+                <i class="fa fa-times"></i> Cancelar 
+            </a>
+            <button class="btn btn-primary"> 
+                <i class="fa fa-envelope"></i> Consultar 
+            </button>  
         </div>
     </form>
 </div>

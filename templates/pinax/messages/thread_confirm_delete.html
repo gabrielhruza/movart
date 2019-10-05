@@ -1,12 +1,12 @@
-{% extends "pinax/messages/base.html" %}
+{% extends "base/base.html" %}
 
 {% block body_class %}{{ block.super }} pinax-messages-thread-delete{% endblock %}
 
-{% load i18n bootstrap %}
+{% load i18n crispy_forms_tags %}
 
 {% block head_title %}Confirm Delete: {{ thread.subject }}{% endblock %}
 
-{% block body %}
+{% block content %}
 <div class="pinax-messages-delete-container">
     <h2>{{ thread.subject }}</h2>
 

@@ -49,12 +49,15 @@
 	<hr>
 
 	<div class="text-center">
-		<a href="#" class="btn btn-lg btn-warning text-uppercase">
+		<a href="#" class="btn btn-warning text-uppercase">
 		<i class="fas fa-shopping-cart"></i> Comprar 
 		</a>
-		<a role="button" href="{% url 'tienda:prodlist' %}" class="btn btn-light btn-lg">
-		<i class="fa fa-times"></i> Cancelar 
+		<a role="button" href="{% url 'tienda:prodcons' producto.id %}" class="btn btn-primary">
+		<i class="fa fa-envelope"></i> Consultar
 		</a>
+		<a role="button" href="{% url 'tienda:prodlist' %}" class="btn btn-light">
+		<i class="fa fa-times"></i> Cancelar 
+		</a>		
 	</div>
 
 	</article> <!-- card-body.// -->
