@@ -85,7 +85,8 @@ def prodcons(request, id):
 		form = ProdconsForm(request.POST)
 		if form.is_valid():
 			try:
-				Message.new_message(from_user=request.user, to_users=[request.user],\
+				prod = Producto.objects.get(id=id)
+				Message.new_message(from_user=request.user, to_users=[prod.tienda.usuario],\
 										subject=id, content=form.cleaned_data['contenido'])
 				messages.success(request, 'Se ha realizado con éxito!')
 				return redirect('/')
