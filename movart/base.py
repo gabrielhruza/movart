@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'social_django',
     'widget_tweaks',
     'taggit',
+    'pinax.messages',
     'core',
     'tienda'
 ]
@@ -70,6 +71,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'social_django.context_processors.backends',                
                 'social_django.context_processors.login_redirect',
+                'pinax.messages.context_processors.user_messages'
             ],
         },
     },
