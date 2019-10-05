@@ -1,0 +1,97 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}{% endblock %}
+{% block content %}
+
+<div class="mb-3">
+	<h3>Completa el formulario</h3>
+</div>
+
+<form method="post" class="ui form {% if form.errors %}error{% endif %}" novalidate>
+{% csrf_token %}
+
+<div class="card">
+	<div class="row">
+	<aside class="col-sm-5 border-right">
+
+	<article class="gallery-wrap"> 
+	<div class="img-big-wrap">
+	  <div> <a href="#">
+	  	<img src="{{ album.imgs.0 }}" class="d-block w-100"></a>
+	  </div>
+	</div> <!-- slider-product.// -->
+	<div class="img-small-wrap">
+	{% for key,value in album.imgs.items %}
+	  <div class="item-gallery"> <img src="{{ value }}"> </div>
+	{% endfor %}
+	</div> <!-- slider-nav.// -->
+	</article> <!-- gallery-wrap .end// -->
+	</aside>
+
+	<aside class="col-sm-7">
+
+	<article class="card-body p-5">	
+	<div class="form-group row"> 
+		<label class="col-sm-3 col-form-label">Nombre:</label>
+		<div class="col-sm-9">
+			{% render_field form.nombre class+="form-control" placeholder=form.nombre.label %}
+		{% if form.nombre.errors %}
+	    	<div class="text-danger">
+	    		{{ form.nombre.errors }}
+	    	</div>
+	    {% endif %}
+	    </div>
+	</div>
+
+	<div class="form-group row"> 
+		<label class="text-warning col-sm-3 col-form-label">AR $</label>
+		<div class="col-sm-9">
+			{% render_field form.precio class+="form-control" placeholder=form.precio.label %}
+		{% if form.precio.errors %}
+	    	<div class="text-danger">
+	    		{{ form.precio.errors }}
+	    	</div>
+	    {% endif %}
+	    </div>
+	</div>
+
+	<div class="form-group row"> 
+		<label class="col-sm-3 col-form-label">Etiquetas:</label>
+		<div class="col-sm-9">
+			{% render_field form.etiquetas class+="form-control"%}
+		{% if form.etiquetas.errors %}
+	    	<div class="text-danger">
+	    		{{ form.etiquetas.errors }}
+	    	</div>
+	    {% endif %}
+	    </div>
+	</div>
+
+	<div class="form-group row"> 
+		<label class="col-sm-3 col-form-label">Descripción:</label>
+		<div class="col-sm-9">
+			{% render_field form.descripcion class+="form-control"%}
+		{% if form.descripcion.errors %}
+	    	<div class="text-danger">
+	    		{{ form.descripcion.errors }}
+	    	</div>
+	    {% endif %}
+	    </div>
+	</div>
+
+	<hr>
+
+	<div class="text-center">
+		<button type="submit" class="btn btn-movart text-uppercase"><i class="fa fa-check"></i> Enviar </button>
+		<a role="button" href="{% url 'core:home' %}" class="btn btn-light text-uppercase">
+		<i class="fa fa-times"></i> Cancelar </a>
+	</div>
+
+	</article> <!-- card-body.// -->
+	</aside> <!-- col.// -->
+	</div> <!-- row.// -->
+</div> <!-- card.// -->
+</form>
+
+{% endblock %}
