@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Perfil
 from .forms  import PerfilForm       
@@ -35,12 +36,31 @@ def verificar_perfil(request):
 
 
 def actualizar_perfil(request):
-	perfil = Perfil.objects.get(usuario=request.user)
+	try:
+		perfil = Perfil.objects.get(usuario=request.user)
+	except Exception as e:
+		messages.error(request, e)
+
 	if request.method == 'POST':
 		form = PerfilForm(request.POST,instance=perfil)
 		if form.is_valid():
-			form.save()
-			return redirect('/')
+			try:
+				form.save()
+				messages.success(request, 'Se ha realizado con éxito!')
+				return redirect('/')
+			except Exception as e:
+				messages.error(request, e)
+			
 	else:
 		form = PerfilForm(instance=perfil)
 	return render(request, 'core/perfiled.html', {'form': form})
+
+
+def ver_perfil(request):
+	try:
+		perfil = Perfil.objects.get(usuario=request.user)
+	except Exception as e:
+		messages.error(request, e)
+		return redirect('/')
+	return render(request, 'core/perfilver.html', {'perfil': perfil})
+	

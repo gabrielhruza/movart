@@ -24,7 +24,7 @@
           VENDER
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Crear Tienda</a>
+          <a class="dropdown-item" href="#">Publicar Tienda</a>
           <a class="dropdown-item" href="#">Publicar de Instagram</a>
         </div>
       </li>
@@ -38,7 +38,7 @@
           {{ request.user.username }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="nav-link" href="{% url 'core:actualizar_perfil' %}">
+          <a class="nav-link" href="{% url 'core:ver_perfil' %}">
             <i class="fa fa-user"></i> Mis Datos
           </a>
           <a class="nav-link" href="{% url 'core:logout' %}">
