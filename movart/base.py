@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'social_django',
     'widget_tweaks',
     'taggit',
+    'pinax.messages',
+    'crispy_forms',
     'core',
     'tienda'
 ]
@@ -70,6 +72,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'social_django.context_processors.backends',                
                 'social_django.context_processors.login_redirect',
+                'pinax.messages.context_processors.user_messages'
             ],
         },
     },
@@ -77,7 +80,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'movart.wsgi.application'
 
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

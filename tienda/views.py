@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from pinax.messages.models import Message
 from .models 	import Tienda, Producto
-from .forms 	import TiendaForm, ProductoForm
+from .forms 	import TiendaForm, ProductoForm, ProdconsForm
 
 
 def tiendadd(request):
@@ -77,3 +78,19 @@ def prodlist(request, id):
 def prodlistall(request):
 	prod_list 	= Producto.objects.all()
 	return render(request, 'tienda/prodlist.html', {'prod_list': prod_list})
+
+
+def prodcons(request, id):
+	if request.method == 'POST':
+		form = ProdconsForm(request.POST)
+		if form.is_valid():
+			try:
+				Message.new_message(from_user=request.user, to_users=[request.user],\
+										subject=id, content=form.cleaned_data['contenido'])
+				messages.success(request, 'Se ha realizado con éxito!')
+				return redirect('/')
+			except Exception as e:
+				messages.error(request, e)
+	else:
+		form = ProdconsForm()
+	return render(request, 'pinax/messages/message_create.html', {'form': form})
