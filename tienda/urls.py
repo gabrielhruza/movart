@@ -7,6 +7,6 @@ app_name = 'tienda'
 urlpatterns = [
 	
 	path("tienda/add/", views.tiendadd, name="tiendadd"),
-	#path("prod/add/", views.prodadd, name="prodadd"),
-
+	path("prod/add/<url>", views.prodadd, name="prodadd"),
+	
 ]
