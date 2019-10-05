@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+<div class="comprar container">
+	<h3>Navegue por las tiendas</h3></br>
+
+	<div class="row">
+	{% for tienda in tienda_list %}
+	<div class="col-md-4 col-sm-6 col-xs-12">
+	    <div class="card mb-3">
+	        <div class="card-body text-center">
+	            <p><img class="img-fluid w-50 rounded-circle" src="{{ tienda.usuario.perfil_set.all.0.url_profile_picture }}" alt="card image"></p>
+	            <h4 class="card-title">{{ tienda.usuario.username }}</h4>
+	            <a href="" class="btn btn-warning btn-sm"><i class="fa fa-rocket"></i></a>
+	        </div>
+	    </div>
+	</div>		
+	{% empty %}
+		No hay tiendas registradas
+	{% endfor %}
+
+	</div>
+</div>
+{% endblock %}

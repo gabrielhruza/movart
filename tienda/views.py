@@ -16,6 +16,16 @@ def tiendadd(request):
 	return redirect('/')
 
 
+def tiendalist(request):
+	tienda_list = Tienda.objects.all()
+	return render(request, 'tienda/tiendalist.html', {'tienda_list': tienda_list})
+
+
+def prodver(request, id):
+	producto = Producto.objects.get(id=id)
+	return render(request, 'tienda/prodver.html', {'producto': producto})
+
+
 def prodadd(request, url):
 	if request.method == 'POST':
 		form = ProductoForm(request.POST)
@@ -59,5 +69,5 @@ def prodedit(request, id):
 
 def prodlist(request):
 	tienda 		= Tienda.objects.get(usuario=request.user)
-	prodlist 	= tienda.producto_set
-	return render(request, 'tienda/prodlist.html', {'prodlist': prodlist})
+	prod_list 	= tienda.producto_set
+	return render(request, 'tienda/prodlist.html', {'prod_list': prod_list})

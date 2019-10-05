@@ -1,6 +1,31 @@
-prodlist.html
-{% for prod in prodlist.all %}
-	{{prod}}
-{% empty %}
-No hay productos agregados
-{% endfor %}
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+<h3>Bienvenido a {{ request.user.username }}</h3></br>
+
+<div class="row">
+	{% for producto in prod_list.all %}
+	<div class="col-md-4 col-lg-3 px-2 mb-3">
+		<div class="product-card card">
+		    <div class="card-body">
+		        <span class="text-secondary small text-uppercase"></span>
+		        <h3 class="h6 mb-2 font-weight-bold text-uppercase">{{ producto.nombre }}</h3>
+		        <div class="d-flex">
+		            <h4 class="h5 w-50 font-weight-bold color-bordo">${{ producto.precio }}</h4>    
+		            <div class="w-50 text-right">
+		                <input data-filled="fa fa-star text-warning" data-empty="fa fa-star-o text-secondary" value="5" type="hidden" class="rating" data-readonly />
+		            </div>
+		        </div>
+		        <img class="w-100 mt-2 mb-3" src="{{ producto.imagen_set.all.0.url }}" />
+		        <a href="{% url 'tienda:prodver' producto.id %}" class="btn btn-outline-warning btn-block mb-2 rounded-pill">
+		            <i class="fa fa-eye"></i> Ver
+		        </a>		        
+		    </div>
+		</div>
+	</div>
+	{% empty %}
+		No hay productos registrados
+	{% endfor %}
+</div>
+{% endblock %}
