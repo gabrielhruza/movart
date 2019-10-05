@@ -7,6 +7,8 @@ app_name = 'tienda'
 urlpatterns = [
 	
 	path("tienda/add/", views.tiendadd, name="tiendadd"),
-	path("prod/add/<url>", views.prodadd, name="prodadd"),
-	
+	path("prod/add/<url>/", views.prodadd, name="prodadd"),
+	path("prod/<id>/edit/", views.prodedit, name="prodedit"),
+	path("prod/list/", views.prodlist, name="prodlist"),
+
 ]
