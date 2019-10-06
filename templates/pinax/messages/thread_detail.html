@@ -6,14 +6,17 @@
 
 {% block content %}
 <div class="pinax-messages-thread-detail-container">
-    <h2 class="with-actions">
+    <h2 class="with-actions text-right">
         {{ thread.subject }}
-        <a class="button" href="{% url 'pinax_messages:thread_delete' thread.pk %}">Delete Thread</a>
+        <a class="btn btn-danger" href="{% url 'pinax_messages:thread_delete' thread.pk %}">
+        <i class="fa fa-trash"></i> Borrar hilo
+        </a>
     </h2>
 
     <section class="thread-messages">
+        <div class="rounded box-shadow my-3 p-3">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Mensajes</h6>
         {% for message in thread.messages.all %}
-          <div class="rounded box-shadow">
             <div class="media text-muted pt-3">
               <img src="{{message.sender.perfil_set.all.0.url_profile_picture}}" alt="" class="mr-2 rounded-circle" width="48" height="48">
               <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
@@ -22,9 +25,9 @@
                 </strong>
                 {{ message.content }}
               </p>
-            </div>
-          </div>            
+            </div>           
         {% endfor %}
+        </div> 
     </section>
 
     <form class="comment-form" action="{% url 'pinax_messages:thread_detail' thread.pk %}" method="post">
@@ -35,7 +38,7 @@
                 <i class="fa fa-times"></i> Cancelar 
             </a>
             <button class="btn btn-primary"> 
-                <i class="fa fa-envelope"></i> Consultar 
+                <i class="fa fa-envelope"></i> Responder 
             </button>  
         </div>
     </form>

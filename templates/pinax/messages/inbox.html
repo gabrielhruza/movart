@@ -9,13 +9,9 @@
 ​
 {% block content %}
 <div class="pinax-messages-inbox-container">
-    <h2 class="with-actions">
-        Inbox
-        <a class="button" href="{% url "pinax_messages:message_create" %}">
-            <i class="fas fa-envelope"></i>
-            New Message
-        </a>
-    </h2>
+    <h3 class="with-actions">
+        Mis Mensajes
+    </h3>
 
     <section class="mailbox">
         {% for thread in threads %}

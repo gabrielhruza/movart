@@ -19,8 +19,9 @@
     <form action="{{ post_url }}" method="POST">
         {% csrf_token %}
         <div class="form-actions">
-            <a href="{% url "pinax_messages:inbox" %}" class="cancel">{% trans "Cancel" %}</a>
+            <a href="{% url 'pinax_messages:inbox' %}" class="cancel">{% trans "Cancel" %}</a>
             <button>{% trans "Delete" %}</button>
         </div>
     </form>
+</div>
 {% endblock %}
