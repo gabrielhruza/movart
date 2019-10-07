@@ -3,6 +3,7 @@ from django.contrib import messages
 from pinax.messages.models import Message
 from .models 	import Tienda, Producto
 from .forms 	import TiendaForm, ProductoForm, ProdconsForm
+from .filters 	import ProductoFilter
 
 
 def tiendadd(request):
@@ -76,8 +77,8 @@ def prodlist(request, id):
 
 #todos los productos de todas las tiendas
 def prodlistall(request):
-	prod_list 	= Producto.objects.all()
-	return render(request, 'tienda/prodlist.html', {'prod_list': prod_list})
+	f = ProductoFilter(request.GET, queryset=Producto.objects.all())
+	return render(request, 'tienda/prodlist.html', {'filter': f})
 
 
 def prodcons(request, id):
