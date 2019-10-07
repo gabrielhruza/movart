@@ -71,14 +71,17 @@ def prodedit(request, id):
 
 #inventario de productos de por tienda
 def prodlist(request, id):
-	prod_list = Producto.objects.filter(tienda=id)
-	return render(request, 'tienda/prodlist.html', {'prod_list': prod_list})
+	tienda = Tienda.objects.get(id=id)
+	t = 'Bienvenido a ' + tienda.usuario.username
+	f = ProductoFilter(request.GET, queryset=Producto.objects.filter(tienda=id))
+	return render(request, 'tienda/prodlist.html', {'filter': f, 'titulo':t})	
 
 
 #todos los productos de todas las tiendas
 def prodlistall(request):
+	t = 'Todos los productos'
 	f = ProductoFilter(request.GET, queryset=Producto.objects.all())
-	return render(request, 'tienda/prodlist.html', {'filter': f})
+	return render(request, 'tienda/prodlist.html', {'filter': f, 'titulo':t})
 
 
 def prodcons(request, id):
