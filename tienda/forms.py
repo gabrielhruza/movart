@@ -18,3 +18,4 @@ class ProductoForm(ModelForm):
 
 class ProdconsForm(forms.Form):
 	contenido = forms.CharField(label='Contenido', widget=forms.Textarea(attrs={'rows': 2}))
+	

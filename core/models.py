@@ -8,4 +8,5 @@ class Perfil(models.Model):
     url_profile_picture = models.CharField(max_length=500, default=None)
     domicilio 	= models.CharField(max_length=100, default=None, null=True)
     descripcion = models.CharField(max_length=250, default=None, null=True)
-    telefono    = models.CharField(max_length=50, default=None, null=True) 
+    telefono    = models.CharField(max_length=50, default=None, null=True)
+    

@@ -99,3 +99,4 @@ def prodcons(request, id):
 	else:
 		form = ProdconsForm()
 	return render(request, 'pinax/messages/message_create.html', {'form': form})
+	

@@ -6,3 +6,4 @@ class PerfilForm(ModelForm):
 	class Meta:
 		model   = Perfil
 		fields  = ['url_profile_picture', 'domicilio','telefono', 'descripcion']
+		
