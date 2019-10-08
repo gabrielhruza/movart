@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'taggit',
     'pinax.messages',
     'crispy_forms',
-    'django_filters',    
+    'django_filters',  
+    'cart',
     'core',
     'tienda'
 ]
