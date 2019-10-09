@@ -23,8 +23,20 @@ class Producto(models.Model):
     class Meta:
         unique_together = ('tienda', 'shortcode')
 
+    #img es un array (o dict, ya vere) con urls
+    def save_imgs(self, imgs):
+        for img in imgs:
+            i = Imagen()
+            i.save_img(img.url, self)
+
 
 class Imagen(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     url = models.CharField(max_length=300)
-    
+
+    #cada imagen del producto es una url de la publicacion de dicho
+    #producto en Instagram, por eso la url
+    def save_img(self, url, producto):
+        self.producto = producto
+        self.url = url
+        self.save()

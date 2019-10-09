@@ -84,14 +84,14 @@ def prodlistall(request):
 	return render(request, 'tienda/prodlist.html', {'filter': f, 'titulo':t})
 
 
-def prodcons(request, id):
+def prodcons(request, p_id):
 	if request.method == 'POST':
 		form = ProdconsForm(request.POST)
 		if form.is_valid():
 			try:
-				prod = Producto.objects.get(id=id)
+				prod = Producto.objects.get(id=p_id)
 				Message.new_message(from_user=request.user, to_users=[prod.tienda.usuario],\
-										subject=id, content=form.cleaned_data['contenido'])
+										subject=p_id, content=form.cleaned_data['contenido'])
 				messages.success(request, 'Se ha realizado con éxito!')
 				return redirect('/')
 			except Exception as e:
@@ -99,4 +99,11 @@ def prodcons(request, id):
 	else:
 		form = ProdconsForm()
 	return render(request, 'pinax/messages/message_create.html', {'form': form})
-	
+
+
+def get_feed(request):
+	pass
+
+
+def get_pub(request):
+	pass

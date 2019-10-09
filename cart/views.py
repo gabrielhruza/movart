@@ -18,5 +18,6 @@ def remove_from_cart(request, product_id):
 
 
 def get_cart(request):
-	return render(request, 'cart/cart.html', {'cart': Cart(request)})
+	cart = Cart(request)
+	return render(request, 'cart/cart.html', {'cart': cart})
 	
