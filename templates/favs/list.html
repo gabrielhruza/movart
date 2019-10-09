@@ -1,0 +1,5 @@
+{% for fav in favs %}
+<p>{{fav}} <a href="{% url 'favs:remove' fav.target_object_id %}">borrar</a></p>
+{% empty %}
+	no hay favoritos
+{% endfor %}

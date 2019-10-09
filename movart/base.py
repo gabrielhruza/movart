@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'pinax.messages',
     'crispy_forms',
     'django_filters',  
+    "fav",
     'cart',
     'core',
     'tienda'

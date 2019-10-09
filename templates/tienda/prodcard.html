@@ -6,7 +6,9 @@
 	        <div class="d-flex">
 	            <h4 class="h5 w-50 font-weight-bold color-bordo">${{ producto.precio }}</h4>    
 	            <div class="w-50 text-right">
-	                <input data-filled="fa fa-star text-warning" data-empty="fa fa-star-o text-secondary" value="5" type="hidden" class="rating" data-readonly />
+	            	<a href="{% url 'favs:add' producto.id %}">
+	                <i class="fa fa-heart text-danger fa-2x" aria-hidden="true"></i>
+	                </a>
 	            </div>
 	        </div>
 	        <img class="w-100 mt-2 mb-3" src="{{ producto.imagen_set.all.0.url }}" />
