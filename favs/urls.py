@@ -7,8 +7,14 @@ app_name = 'favs'
 
 urlpatterns = [
 	
-	path("list/", views.list, name="list"),
-	path("<pid>/add/", views.add, name="add"),
-	path("<pid>/remove/", views.remove, name="remove"),
+	#Productos favoritos
+	path("p/list/", views.plist, name="plist"),
+	path("p/<pid>/add/", views.padd, name="padd"),
+	path("p/<pid>/remove/", views.premove, name="premove"),
+
+	#Tiendas favoritas
+	path("t/list/", views.tlist, name="tlist"),
+	path("t/<tid>/add/", views.tadd, name="tadd"),
+	path("t/<tid>/remove/", views.tremove, name="tremove"),	
 
 ]
