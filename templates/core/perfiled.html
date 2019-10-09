@@ -70,8 +70,12 @@
 	</div>
 
 	<div class="text-center">
-		<button type="submit" class="btn btn-warning"> Enviar </a>
-		<!--	<a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to cart </a>-->
+	<div class="text-center">
+		<button type="submit" class="btn btn-warning"> 
+			<i class="fa fa-check"></i> Enviar </button>
+		<a role="button" href="{% url 'core:home' %}" class="btn btn-light">
+		<i class="fa fa-times"></i> Volver </a>
+	</div>
 	</div>
 
 	</article> <!-- card-body.// -->

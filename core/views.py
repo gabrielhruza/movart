@@ -30,8 +30,9 @@ def verificar_perfil(request):
 			perfil.url_profile_picture = 'https://images-na.ssl-images-amazon.com/images/I/51XYolCzVKL._SL1200_.jpg'
 			try:
 				perfil.save()
+				messages.success(request, 'Login perfecto')
 			except Exception as e:
-				raise e
+				messages.error(request, e)
 	return render(request, 'core/home.html')
 
 
@@ -46,7 +47,7 @@ def actualizar_perfil(request):
 		if form.is_valid():
 			try:
 				form.save()
-				messages.success(request, 'Se ha realizado con éxito!')
+				messages.success(request, 'Se ha editado con éxito!')
 				return redirect('/')
 			except Exception as e:
 				messages.error(request, e)
