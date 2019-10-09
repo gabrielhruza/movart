@@ -16,16 +16,16 @@
     <section class="mailbox">
         <ul class="list-group box-shadow">
         {% for thread in threads %}
-            <div class="thread {% if thread|unread:user %}unread{% endif %}">
-                <li class="list-group-item">
-                <a href="{{thread.get_absolute_url}}">
-                    <div class="participants">{{ thread.users.all|join:", " }}</div>
-                    <div class="latest-message">
-                        <p>{{ thread.subject }}
-                        {{ thread.latest_message.content }}</p>
-                    </div>
-                </a>
-                </li>
+            <div class="thread">
+            <li class="list-group-item {% if thread|unread:user %}list-group-item-info{% endif %}">
+            <a href="{{thread.get_absolute_url}}">
+                <div class="participants">{{ thread.users.all|join:", " }}</div>
+                <div class="latest-message">
+                    <p>{{ thread.subject }}
+                    {{ thread.latest_message.content }}</p>
+                </div>
+            </a>
+            </li>
             </div>
         {% empty %}
             <div class="no-messages">You have no messages.</div>

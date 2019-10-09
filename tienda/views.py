@@ -23,8 +23,8 @@ def tiendalist(request):
 	return render(request, 'tienda/tiendalist.html', {'tienda_list': tienda_list})
 
 
-def prodver(request, id):
-	producto = Producto.objects.get(id=id)
+def prodver(request, pid):
+	producto = Producto.objects.get(id=pid)
 	return render(request, 'tienda/prodver.html', {'producto': producto})
 
 
@@ -48,9 +48,9 @@ def prodadd(request, url):
 	return render(request, 'tienda/prodadd.html', {'form': form})
 
 
-def prodedit(request, id):
+def prodedit(request, pid):
 	try:
-		prod = Producto.objects.get(id=id)
+		prod = Producto.objects.get(id=pid)
 	except Exception as e:
 		messages.error(request, e)
 	if request.method == 'POST':
@@ -70,10 +70,10 @@ def prodedit(request, id):
 
 
 #inventario de productos de por tienda
-def prodlist(request, id):
-	tienda = Tienda.objects.get(id=id)
+def prodlist(request, tid):
+	tienda = Tienda.objects.get(id=tid)
 	t = 'Bienvenido a ' + tienda.usuario.username
-	f = ProductoFilter(request.GET, queryset=Producto.objects.filter(tienda=id))
+	f = ProductoFilter(request.GET, queryset=Producto.objects.filter(tienda=tid))
 	return render(request, 'tienda/prodlist.html', {'filter': f, 'titulo':t})	
 
 
@@ -84,14 +84,14 @@ def prodlistall(request):
 	return render(request, 'tienda/prodlist.html', {'filter': f, 'titulo':t})
 
 
-def prodcons(request, id):
+def prodcons(request, pid):
 	if request.method == 'POST':
 		form = ProdconsForm(request.POST)
 		if form.is_valid():
 			try:
-				prod = Producto.objects.get(id=id)
+				prod = Producto.objects.get(id=pid)
 				Message.new_message(from_user=request.user, to_users=[prod.tienda.usuario],\
-										subject=id, content=form.cleaned_data['contenido'])
+										subject=pid, content=form.cleaned_data['contenido'])
 				messages.success(request, 'Se ha realizado con éxito!')
 				return redirect('/')
 			except Exception as e:
