@@ -1,0 +1,13 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+<h3>{{ titulo }}</h3>
+
+{% for fav in favs %}
+<p>{{fav.target_content_type}} <a href="{% url 'favs:tremove' fav.target_object_id  %}">borrar</a></p>
+{% empty %}
+	no hay favoritos
+{% endfor %}
+
+{% endblock %}

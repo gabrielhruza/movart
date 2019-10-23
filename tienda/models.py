@@ -27,3 +27,4 @@ class Producto(models.Model):
 class Imagen(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     url = models.CharField(max_length=300)
+    

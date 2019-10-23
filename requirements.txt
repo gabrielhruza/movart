@@ -5,6 +5,8 @@ dj-database-url==0.5.0
 Django==2.2.6
 django-appconf==1.0.3
 django-crispy-forms==1.7.2
+django-fav==0.3
+django-filter==2.2.0
 django-taggit==1.1.0
 django-widget-tweaks==1.4.5
 gunicorn==19.9.0

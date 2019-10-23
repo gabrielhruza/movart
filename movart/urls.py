@@ -12,6 +12,8 @@ urlpatterns = [
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
     path('messages/', include("pinax.messages.urls", namespace="pinax_messages")),
     path('', include('core.urls', namespace="core")),
-    path('', include('tienda.urls', namespace="tienda")),    
+    path('', include('tienda.urls', namespace="tienda")),
+    path('cart/', include('cart.urls', namespace="carrito")),
+    path('fav/', include('favs.urls', namespace="favs"))
 
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

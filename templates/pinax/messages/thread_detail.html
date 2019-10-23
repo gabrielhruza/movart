@@ -8,14 +8,16 @@
 <div class="pinax-messages-thread-detail-container">
     <h2 class="with-actions text-right">
         {{ thread.subject }}
-        <a class="btn btn-danger" href="{% url 'pinax_messages:thread_delete' thread.pk %}">
-        <i class="fa fa-trash"></i> Borrar hilo
-        </a>
     </h2>
 
     <section class="thread-messages">
         <div class="rounded box-shadow my-3 p-3">
-        <h6 class="border-bottom border-gray pb-2 mb-0">Mensajes</h6>
+        <div class="border-bottom border-gray pb-3 mb-0">
+        <span class="text-left"> Mensajes</span>
+        <span class="float-right mb-1">
+            <a class="btn btn-outline-danger btn-sm" href="{% url 'pinax_messages:thread_delete' thread.pk %}"><i class="fa fa-trash"></i> Borrar hilo</a>
+        </span>
+        </div>
         {% for message in thread.messages.all %}
             <div class="media text-muted pt-3">
               <img src="{{message.sender.perfil_set.all.0.url_profile_picture}}" alt="" class="mr-2 rounded-circle" width="48" height="48">

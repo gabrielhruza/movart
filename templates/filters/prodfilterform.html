@@ -1,0 +1,21 @@
+{% load widget_tweaks %}
+{% block content %}
+    <form action="" method="get">
+		<div class="form-row col-md-8"> 
+			<div class="col-md-3 col-sm-12">
+				{% render_field filter.form.nombre class+="form-control" placeholder=filter.form.nombre.label %}
+		    </div>
+			<div class="col-md-3 col-sm-12">
+				{% render_field filter.form.precio class+="form-control" placeholder=filter.form.precio.label %}
+		    </div>
+			<div class="col-md-4 col-sm-12">
+				{% render_field filter.form.etiquetas class+="form-control" placeholder=filter.form.etiquetas.label %}
+		    </div>
+		    <div class="col-md-2 col-sm-6">
+			<button type="submit" class="btn btn-warning">
+				<i class="fa fa-filter"></i> Filtrar 
+			</button>
+			</div>
+		</div>
+    </form>
+{% endblock %}

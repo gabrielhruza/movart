@@ -49,14 +49,14 @@
 	<hr>
 
 	<div class="text-center">
-		<a href="#" class="btn btn-warning text-uppercase">
-			<i class="fas fa-shopping-cart"></i> Comprar 
+		<a href="{% url 'cart:additem' producto.id 1 %}" class="btn btn-warning text-uppercase">
+			<i class="fas fa-shopping-cart"></i> Agregar
 		</a>
 		<a role="button" href="{% url 'tienda:prodcons' producto.id %}" class="btn btn-primary">
 			<i class="fa fa-envelope"></i> Consultar
 		</a>
 		<a role="button" href="{% url 'tienda:prodlist' producto.tienda.id %}" class="btn btn-light">
-			<i class="fa fa-times"></i> Cancelar 
+			<i class="fa fa-times"></i> Volver
 		</a>		
 	</div>
 
