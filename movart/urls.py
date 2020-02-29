@@ -14,6 +14,8 @@ urlpatterns = [
     path('', include('core.urls', namespace="core")),
     path('', include('tienda.urls', namespace="tienda")),
     path('cart/', include('cart.urls', namespace="carrito")),
-    path('fav/', include('favs.urls', namespace="favs"))
+    path('fav/', include('favs.urls', namespace="favs")),
+    path('denuncia/', include('denuncia.urls', namespace="denuncia")),
+
 
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

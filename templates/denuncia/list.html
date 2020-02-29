@@ -1,0 +1,35 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+<h3>{{ titulo }}</h3>
+
+
+<table class="table">
+    <tr>
+        <thead class="thead-light">
+            <tr>
+            	<th scope="col">Denunciante</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for denuncia in denuncias %}
+            <tr>
+            	<td>{{denuncia.denunciante.username}}</td>
+                <td>{{denuncia.publicacion.nombre}}</td>
+                <td>{{denuncia.descripcion}}</td>
+				<td class="text-center">
+					<a href="#" class="btn btn-danger btn-xs">
+						<i class="fa fa-trash" aria-hidden="true"></i>
+					</a>
+				</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+
+
+{% endblock %}

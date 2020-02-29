@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     "fav",
     'cart',
     'core',
-    'tienda'
+    'tienda',
+    'denuncia'
 ]
 
 MIDDLEWARE = [
