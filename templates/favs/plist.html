@@ -6,6 +6,7 @@
 
 {% for fav in favs %}
 <p>{{fav.target_content_type}} <a href="{% url 'favs:premove' fav.target_object_id  %}">borrar</a></p>
+{{ fav.target.nombre }}
 {% empty %}
 	no hay favoritos
 {% endfor %}
