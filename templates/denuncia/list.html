@@ -19,10 +19,14 @@
             {% for denuncia in denuncias %}
             <tr>
             	<td>{{denuncia.denunciante.username}}</td>
-                <td>{{denuncia.publicacion.nombre}}</td>
+                <td>
+                    <a href="{% url 'tienda:prodver' denuncia.publicacion.id %}">
+                        {{denuncia.publicacion.nombre}}
+                    </a>
+                </td>
                 <td>{{denuncia.descripcion}}</td>
 				<td class="text-center">
-					<a href="#" class="btn btn-danger btn-xs">
+					<a href="#" class="btn btn-danger btn-sm">
 						<i class="fa fa-trash" aria-hidden="true"></i>
 					</a>
 				</td>
