@@ -31,6 +31,14 @@
       <li class="nav-item">
         <a class="nav-link" href="#"><i class="fa fa-info-circle"></i> nosotros</a>
       </li>
+
+      {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'denuncia:dlist' %}">
+          <i class="fas fa-bullhorn"></i> 
+          denuncias</a>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link" href="{% url 'pinax_messages:inbox' %}">
           <i class="fa fa-envelope"></i>
@@ -48,7 +56,6 @@
       </a>         
       </li>
 
-      {% if user.is_authenticated %}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{ request.user.username }}
