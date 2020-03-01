@@ -11,7 +11,7 @@
 <div class="card">
 	<div class="row">
 	
-	<aside class="col-sm-5 text-center mt-3">
+	<aside class="col-sm-5 text-center mt-5">
 	<img class="img-fluid w-50 rounded-circle" src="{{ perfil.url_profile_picture }}" alt="card image">
 	</aside>
 
@@ -31,13 +31,22 @@
 		<label class="col-sm-12 col-perfil-label">Descripción: {{ perfil.descripcion }}</label>
 	</div>
 
+	<div class="perfil-group row"> 
+		<label class="col-sm-12 col-perfil-label">Reputación:</label>
+	</div>
+	{% include 'core/reputacion.html' %}
+
+	{% if user.is_authenticated %}
+	{% ifequal perfil.usuario user %}
 	<div class="text-center">
 		<a role="button" href="{% url 'core:actualizar_perfil' %}" class="btn btn-warning"> 
 			<i class="fa fa-edit"></i> Editar </a>
 		<a role="button" href="{% url 'core:home' %}" class="btn btn-light">
 		<i class="fa fa-times"></i> Cancelar </a>
 	</div>
-
+	{% endifequal %}
+	{% endif %}
+	
 	</article> <!-- card-body.// -->
 	</aside> <!-- col.// -->
 	</div> <!-- row.// -->

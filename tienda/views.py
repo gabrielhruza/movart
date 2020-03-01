@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from pinax.messages.models import Message
+from core.models import Perfil
 from .models 	import Tienda, Producto
 from .forms 	import TiendaForm, ProductoForm, ProdconsForm
 from .filters 	import ProductoFilter
@@ -21,6 +22,16 @@ def tiendadd(request):
 def tiendalist(request):
 	tienda_list = Tienda.objects.all()
 	return render(request, 'tienda/tiendalist.html', {'tienda_list': tienda_list})
+
+
+def tiendaver(request, tid):
+	try:
+		tienda = Tienda.objects.get(id=tid)
+		perfil = Perfil.objects.get(usuario=tienda.usuario)
+	except Exception as e:
+		messages.error(request, e)
+		return redirect('/')
+	return render(request, 'core/perfilver.html', {'perfil': perfil})
 
 
 def prodver(request, pid):

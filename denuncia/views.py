@@ -34,13 +34,13 @@ def dadd(request, pid):
 
 
 
-def premove(request, pid):
-	try:
-		prod = Producto.objects.get(id=pid)
-		fav = Favorite.objects.get_favorite(request.user, prod)
-		fav.delete()
-		messages.warning(request, 'Se ha eliminado de favoritos!')
-	except Exception as e:
-		messages.error(request, 'Ha ocurrido un error, intente de nuevo por favor')
-	url = request.META.get('HTTP_REFERER')
-	return redirect(url)
+# def premove(request, pid):
+# 	try:
+# 		prod = Producto.objects.get(id=pid)
+# 		fav = Favorite.objects.get_favorite(request.user, prod)
+# 		fav.delete()
+# 		messages.warning(request, 'Se ha eliminado de favoritos!')
+# 	except Exception as e:
+# 		messages.error(request, 'Ha ocurrido un error, intente de nuevo por favor')
+# 	url = request.META.get('HTTP_REFERER')
+# 	return redirect(url)

@@ -8,6 +8,7 @@ urlpatterns = [
 	
 	path("tienda/add/", views.tiendadd, name="tiendadd"),
 	path("tienda/list/", views.tiendalist, name="tiendalist"),
+	path("tienda/ver/<tid>/", views.tiendaver, name="tiendaver"),
 	path("tienda/<tid>/prods/", views.prodlist, name="prodlist"),
 	path("prod/<pid>/ver/", views.prodver, name="prodver"),
 	path("prod/add/<url>/", views.prodadd, name="prodadd"),
