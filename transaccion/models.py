@@ -5,7 +5,7 @@ from tienda.models 	import Producto, Tienda
 
 
 class Transaccion(models.Model):
-	usuario     = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, default=None)
+	cliente     = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, default=None)
 	producto    = models.ForeignKey(Producto, on_delete=models.CASCADE, default=None)
 	tienda      = models.ForeignKey(Tienda, on_delete=models.CASCADE, default=None)
 	cantidad    = models.PositiveIntegerField(default=1)
@@ -13,5 +13,5 @@ class Transaccion(models.Model):
 
 
 	def __str__(self):
-		return self.usuario.nombre
+		return self.cliente.username
 
