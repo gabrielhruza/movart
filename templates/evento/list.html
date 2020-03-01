@@ -5,7 +5,10 @@
 <h3>{{ titulo }}</h3>
 
 
-<table class="table">
+<a href="{% url 'evento:add' %}" type="button" class="btn btn-primary">
+    <i class="fas fa-plus"></i> Agregar Evento</a>
+
+<table class="table" style="margin-top: 1em">
     <tr>
         <thead class="thead-light">
             <tr>
