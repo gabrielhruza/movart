@@ -34,7 +34,7 @@
 	<div class="perfil-group row"> 
 		<label class="col-sm-12 col-perfil-label">Reputación:</label>
 	</div>
-	{% include 'core/reputacion.html' %} {{reputacion.votos}}
+	{% include 'core/reputacion.html' with rep=reputacion %}
 
 	{% if user.is_authenticated %}
 	{% ifequal perfil.usuario user %}

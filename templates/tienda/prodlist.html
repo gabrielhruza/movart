@@ -2,7 +2,13 @@
 {% load static %}
 {% block title %}{% endblock %}
 {% block content %}
-<h3>{{ titulo }}</h3>
+<h3>{{ titulo }}
+
+{% if tid %}	
+<a role="button" href="{% url 'tienda:tiendaver' tid %}" class="btn btn-info">
+	<i class="fa fa-info-circle" aria-hidden="true"></i> Más información
+</a></h3>
+{% endif %}
 
 <div class="mb-3 mt-3">
 {% include 'filters/prodfilterform.html' %}

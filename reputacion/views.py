@@ -20,3 +20,4 @@ def votar(request, tid, calif):
 	reputacion.votar(calif)
 	reputacion.save()
 	return redirect('/')
+

@@ -87,7 +87,7 @@ def prodlist(request, tid):
 	tienda = Tienda.objects.get(id=tid)
 	t = 'Bienvenido a ' + tienda.usuario.username
 	f = ProductoFilter(request.GET, queryset=Producto.objects.filter(tienda=tid))
-	return render(request, 'tienda/prodlist.html', {'filter': f, 'titulo':t})	
+	return render(request, 'tienda/prodlist.html', {'filter':f, 'titulo':t, 'tid':tid})	
 
 
 #todos los productos de todas las tiendas
