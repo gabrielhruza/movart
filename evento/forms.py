@@ -6,6 +6,9 @@ from .models import Evento
 
 class EventoForm(ModelForm):
 	class Meta:
-		model = Evento
-		fields = ['nombre', 'inicio', 'fin', 'descripcion', 'flyer']
-		
+		model  = Evento
+		fields = '__all__'
+		widgets = {
+            'inicio': forms.DateInput(attrs={'type': 'date'}),
+			'fin': forms.DateInput(attrs={'type': 'date'})
+		}

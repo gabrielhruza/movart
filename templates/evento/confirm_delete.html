@@ -10,7 +10,8 @@
 
 <form method="post">{% csrf_token %}
     ¿Estás seguro que deseas borrar el curso "{{ object }}"?
-    <input type="submit" value="Submit" />
+    <button type="submit" class="btn btn-danger"> <i class="fas fa-trash"></i> 
+    	Eliminar</button>
 </form>
 
 {% endblock %}
