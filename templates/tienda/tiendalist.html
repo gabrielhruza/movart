@@ -13,7 +13,7 @@
 	            <p><img class="img-fluid w-50 rounded-circle" src="{{ tienda.usuario.perfil_set.all.0.url_profile_picture }}" alt="card image"></p>
 	            <h4 class="card-title">{{ tienda.usuario.username }}</h4>
 	            <a href="{% url 'tienda:prodlist' tienda.id %}" class="btn btn-warning btn-sm"><i class="fa fa-rocket"></i></a>
-	            <a href="{% url 'favs:tadd' tienda.id %}"><i class="fa fa-star fa-2x text-warning"></i></a>	            
+	            <a href="{% url 'favs:tadd' tienda.id %}"><i class="fa fa-star-o fa-2x text-warning"></i></a>	            
 	        </div>
 	    </div>
 	</div>		

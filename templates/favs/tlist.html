@@ -4,10 +4,26 @@
 {% block content %}
 <h3>{{ titulo }}</h3>
 
-{% for fav in favs %}
-<p>{{fav.target_content_type}} <a href="{% url 'favs:tremove' fav.target_object_id  %}">borrar</a></p>
-{% empty %}
-	no hay favoritos
-{% endfor %}
+<div class="comprar container">
+	<h3>Tiendas Favoritas</h3></br>
+
+	<div class="row">
+	{% for fav in favs %}
+	<div class="col-md-4 col-sm-6 col-xs-12">
+	    <div class="card mb-3">
+	        <div class="card-body text-center">
+	            <p><img class="img-fluid w-50 rounded-circle" src="{{ fav.target.usuario.perfil_set.all.0.url_profile_picture }}" alt="card image"></p>
+	            <h4 class="card-title">{{ fav.target.usuario.username }}</h4>
+	            <a href="{% url 'tienda:prodlist' fav.target.id %}" class="btn btn-warning btn-sm"><i class="fa fa-rocket"></i></a>
+	            <a href="{% url 'favs:tremove' fav.target.id %}"><i class="fa fa-star fa-2x text-warning"></i></a>	            
+	        </div>
+	    </div>
+	</div>		
+	{% empty %}
+		No hay favoritos
+	{% endfor %}
+
+	</div>
+</div>
 
 {% endblock %}

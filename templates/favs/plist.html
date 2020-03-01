@@ -4,11 +4,11 @@
 {% block content %}
 <h3>{{ titulo }}</h3>
 
+<div class="row">
 {% for fav in favs %}
-<p>{{fav.target_content_type}} <a href="{% url 'favs:premove' fav.target_object_id  %}">borrar</a></p>
-{{ fav.target.nombre }}
+{% include 'favs/prodcard.html' with producto=fav.target %}
 {% empty %}
 	no hay favoritos
 {% endfor %}
-
+</div>
 {% endblock %}

@@ -6,7 +6,8 @@ from tienda.models import Tienda, Producto
 
 def plist(request):
 	favs = Favorite.objects.for_user(request.user, model=Producto)
-	return render(request, 'favs/plist.html', {'favs' : favs})
+	t 	 = 'Productos favoritos'
+	return render(request, 'favs/plist.html', {'favs' : favs, 'titulo': t})
 
 
 def padd(request, pid):
