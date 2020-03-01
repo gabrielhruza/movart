@@ -17,6 +17,7 @@ urlpatterns = [
     path('fav/', include('favs.urls', namespace="favs")),
     path('denuncia/', include('denuncia.urls', namespace="denuncia")),
     path('evento/', include('evento.urls', namespace="evento")),
+    path('reputacion/', include('reputacion.urls', namespace="reputacion")),
 
 
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

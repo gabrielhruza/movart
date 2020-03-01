@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from pinax.messages.models import Message
 from core.models import Perfil
+from reputacion.models import Reputacion
 from .models 	import Tienda, Producto
 from .forms 	import TiendaForm, ProductoForm, ProdconsForm
 from .filters 	import ProductoFilter
@@ -28,10 +29,11 @@ def tiendaver(request, tid):
 	try:
 		tienda = Tienda.objects.get(id=tid)
 		perfil = Perfil.objects.get(usuario=tienda.usuario)
+		reputacion = Reputacion.objects.get(tienda=tienda)
 	except Exception as e:
 		messages.error(request, e)
 		return redirect('/')
-	return render(request, 'core/perfilver.html', {'perfil': perfil})
+	return render(request, 'core/perfilver.html', {'perfil': perfil, 'reputacion': reputacion})
 
 
 def prodver(request, pid):
