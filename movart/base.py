@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'tienda',
     'denuncia',
     'evento',
-    'reputacion'
+    'reputacion',
+    'transaccion'
 ]
 
 MIDDLEWARE = [
