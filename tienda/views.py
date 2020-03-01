@@ -33,7 +33,7 @@ def tiendaver(request, tid):
 	except Exception as e:
 		messages.error(request, e)
 		return redirect('/')
-	return render(request, 'core/perfilver.html', {'perfil': perfil, 'reputacion': reputacion})
+	return render(request, 'tienda/tiendaver.html', {'perfil': perfil, 'reputacion': reputacion})
 
 
 def prodver(request, pid):

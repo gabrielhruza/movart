@@ -11,7 +11,7 @@
 <div class="card">
 	<div class="row">
 	
-	<aside class="col-sm-5 text-center mt-1">
+	<aside class="col-sm-5 text-center mt-5">
 	<img class="img-fluid w-50 rounded-circle" src="{{ perfil.url_profile_picture }}" alt="card image">
 	</aside>
 
@@ -30,6 +30,11 @@
 	<div class="perfil-group row"> 
 		<label class="col-sm-12 col-perfil-label">Descripción: {{ perfil.descripcion }}</label>
 	</div>
+
+	<div class="perfil-group row"> 
+		<label class="col-sm-12 col-perfil-label">Reputación:</label>
+	</div>
+	{% include 'tienda/reputacion.html' with rep=reputacion %}
 
 	{% if user.is_authenticated %}
 	{% ifequal perfil.usuario user %}
