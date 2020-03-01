@@ -1,0 +1,36 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+<h3>Ventas realizadas</h3>
+
+
+<table class="table">
+    <tr>
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in ts %}
+            <tr>
+                <td>{{t.id}}</td>
+                <td>{{t.cliente}}</td>
+                <td>
+                    <a href="{% url 'tienda:prodver' t.producto.id %}">
+                        {{t.producto.nombre}}
+                    </a>                </td>
+                <td>{{t.cantidad}}</td>
+                <td>Check out</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+
+
+{% endblock %}

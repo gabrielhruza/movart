@@ -9,21 +9,21 @@ from tienda.models  import Producto, Tienda
 
 def compras(request):
 	try:
-		t = Transaccion.objects.filter(cliente=request.user)
+		ts = Transaccion.objects.filter(cliente=request.user)
 	except Exception as e:
 		messages.error(request, e)
-		t = {} 		
-	return render(request, 'transaccion/list.html', {'t' : t})
+		ts = {} 		
+	return render(request, 'transaccion/compras.html', {'ts' : ts})
 
 
 def ventas(request):
 	try:
 		tienda = Tienda.objects.get(usuario=request.user)
-		t = Transaccion.objects.filter(tienda=tienda)
+		ts = Transaccion.objects.filter(tienda=tienda)
 	except Exception as e:
 		messages.error(request, e)
-		t = {} 			
-	return render(request, 'transaccion/list.html', {'t' : t})
+		ts = {} 			
+	return render(request, 'transaccion/ventas.html', {'ts' : ts})
 
 
 def add(request, pid, q):
@@ -34,6 +34,7 @@ def add(request, pid, q):
 		t           = Transaccion(cliente=request.user, 
 										producto=producto, 
 										tienda=producto.tienda,
+										precio=producto.precio,
 										cantidad = q )
 		t.save()
 		messages.success(request, 'Se ha realizado correctamente!')

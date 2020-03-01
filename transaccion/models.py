@@ -9,6 +9,7 @@ class Transaccion(models.Model):
 	producto    = models.ForeignKey(Producto, on_delete=models.CASCADE, default=None)
 	tienda      = models.ForeignKey(Tienda, on_delete=models.CASCADE, default=None)
 	cantidad    = models.PositiveIntegerField(default=1)
+	precio      = models.PositiveIntegerField(default=1)
 	fecha 		= models.DateField(default=datetime.date.today)
 
 
