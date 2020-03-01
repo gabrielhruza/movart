@@ -19,9 +19,15 @@ class Producto(models.Model):
     precio       = models.PositiveIntegerField()
     etiquetas    = TaggableManager()
     album        = models.BooleanField(default=False)
+    visitas      = models.PositiveIntegerField(default=1)   
 
     class Meta:
         unique_together = ('tienda', 'shortcode')
+
+    
+    def visita(self):
+        self.visitas += 1
+        self.save()
 
 
 class Imagen(models.Model):

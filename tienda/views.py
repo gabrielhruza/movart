@@ -38,6 +38,7 @@ def tiendaver(request, tid):
 
 def prodver(request, pid):
 	producto = Producto.objects.get(id=pid)
+	producto.visita()
 	return render(request, 'tienda/prodver.html', {'producto': producto})
 
 
