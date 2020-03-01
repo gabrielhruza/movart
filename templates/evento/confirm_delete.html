@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}{% endblock %}
+{% block content %}
+
+<div class="mb-3">
+	<h3>Completa el formulario</h3>
+</div>
+
+<form method="post">{% csrf_token %}
+    ¿Estás seguro que deseas borrar el curso "{{ object }}"?
+    <input type="submit" value="Submit" />
+</form>
+
+{% endblock %}

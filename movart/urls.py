@@ -16,6 +16,7 @@ urlpatterns = [
     path('cart/', include('cart.urls', namespace="carrito")),
     path('fav/', include('favs.urls', namespace="favs")),
     path('denuncia/', include('denuncia.urls', namespace="denuncia")),
+    path('evento/', include('evento.urls', namespace="evento")),
 
 
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
