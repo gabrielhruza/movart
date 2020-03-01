@@ -3,11 +3,13 @@ from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
 
 from .models    	import Reputacion
 from tienda.models  import Tienda
 
-
+@login_required
 def votar(request, tid, calif):
 	try:
 		reputacion = Reputacion.objects.get(tienda=tid)

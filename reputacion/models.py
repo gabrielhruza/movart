@@ -6,7 +6,7 @@ from tienda.models 	import Tienda
 
 class Reputacion(models.Model):
 	tienda 		= models.ForeignKey(Tienda, on_delete=models.CASCADE)
-	valor5 		= models.PositiveIntegerField(default=0)
+	valor5 		= models.PositiveIntegerField(default=1)
 	valor4 		= models.PositiveIntegerField(default=0)
 	valor3 		= models.PositiveIntegerField(default=0)
 	valor2 		= models.PositiveIntegerField(default=0)
