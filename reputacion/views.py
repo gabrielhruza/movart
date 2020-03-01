@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
@@ -16,8 +17,12 @@ def votar(request, tid, calif):
 		except Exception as e:
 			raise e
 		reputacion = Reputacion(tienda=tienda)
-
-	reputacion.votar(calif)
-	reputacion.save()
-	return redirect('/')
+	try: 	
+		reputacion.votar(calif)
+		reputacion.save()
+		messages.success(request, 'Se ha realizado con éxito!')
+	except Exception as e:
+		messages.error(request, e)
+	url = request.META.get('HTTP_REFERER')
+	return redirect(url)
 

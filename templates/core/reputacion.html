@@ -74,6 +74,13 @@
                         <!-- end row -->
                     </div>
                 </div>
+                <p class="mt-2">Déjanos tu voto: 
+                    <a href="{% url 'reputacion:votar' rep.tienda.id 1 %}">1<i class="fa fa-star-o" aria-hidden="true"></i></a>
+                    <a href="{% url 'reputacion:votar' rep.tienda.id 2 %}"> 2<i class="fa fa-star-o" aria-hidden="true"></i></a>
+                    <a href="{% url 'reputacion:votar' rep.tienda.id 3 %}"> 3<i class="fa fa-star-o" aria-hidden="true"></i></a>
+                    <a href="{% url 'reputacion:votar' rep.tienda.id 4 %}"> 4<i class="fa fa-star-o" aria-hidden="true"></i></a>
+                    <a href="{% url 'reputacion:votar' rep.tienda.id 5 %}"> 5<i class="fa fa-star-o" aria-hidden="true"></i></a>
+                </p>
             </div>
         </div>
-    </div>
+</div>

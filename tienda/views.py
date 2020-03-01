@@ -55,7 +55,6 @@ def prodadd(request, url):
 				return redirect('/')
 			except Exception as e:
 				messages.error(request, e)
-				print(e)
 	else:
 		form = ProductoForm()
 	return render(request, 'tienda/prodadd.html', {'form': form})
