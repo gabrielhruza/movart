@@ -1,0 +1,47 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+<h3>{{ titulo }}</h3>
+
+
+<a href="{% url 'evento:add' %}" type="button" class="btn btn-primary">
+    <i class="fas fa-plus"></i> Agregar Evento</a>
+
+<table class="table" style="margin-top: 1em">
+    <tr>
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Id</th>
+            	<th scope="col">Nombre</th>
+                <th scope="col">Inicio</th>
+                <th scope="col">Fin</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Acción</th>                
+            </tr>
+        </thead>
+        <tbody>
+            {% for evento in object_list %}
+            <tr>
+                <td>
+                    <a href="{% url 'evento:detail' evento.id %}">
+                        {{evento.id}}
+                    </a>
+                </td>                
+            	<td>{{evento.nombre}}</td>
+                <td>{{evento.inicio}}</td>
+                <td>{{evento.fin}}</td>
+                <td>{{evento.descripcion}}</td>
+				<td class="text-center">
+                    <a href="{% url 'evento:edit' evento.id %}" class="btn btn-info btn-sm"><i class="fa fa-edit" aria-hidden="true"></i>              
+                    </a>					
+                    <a href="{% url 'evento:delete' evento.id %}" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i>              
+					</a>
+				</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+
+
+{% endblock %}

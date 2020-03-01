@@ -19,15 +19,24 @@ class Producto(models.Model):
     precio       = models.PositiveIntegerField()
     etiquetas    = TaggableManager()
     album        = models.BooleanField(default=False)
+    visitas      = models.PositiveIntegerField(default=1)   
 
     class Meta:
         unique_together = ('tienda', 'shortcode')
 
-    #img es un array (o dict, ya vere) con urls
-    def save_imgs(self, imgs):
-        for img in imgs:
-            i = Imagen()
-            i.save_img(img.url, self)
+    
+    def visita(self):
+        self.visitas += 1
+        self.save()
+
+# <<<<<<< HEAD
+#     #img es un array (o dict, ya vere) con urls
+#     def save_imgs(self, imgs):
+#         for img in imgs:
+#             i = Imagen()
+#             i.save_img(img.url, self)
+# =======
+
 
 
 class Imagen(models.Model):

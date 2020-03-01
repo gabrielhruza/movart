@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+<h3>{{ titulo }}</h3>
+
+<div class="row">
+{% for fav in favs %}
+{% include 'favs/prodcard.html' with producto=fav.target %}
+{% empty %}
+	no hay favoritos
+{% endfor %}
+</div>
+{% endblock %}

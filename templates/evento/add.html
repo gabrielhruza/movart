@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}{% endblock %}
+{% block content %}
+
+<div class="mb-3">
+	<h3>Completa el formulario</h3>
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    {% for field in form.visible_fields %}
+	 <div class="form-group">
+	    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+	    {{ field|add_class:'form-control' }}
+	    {% for error in field.errors %}
+	    <div class="text-danger">{{ error }}</div>
+	    {% endfor %}
+	  </div>
+  	{% endfor %}
+    
+    <button type="submit" class="btn btn-primary"> <i class="fas fa-plus"></i> 
+    	Agregar</button>
+</form>
+
+{% endblock %}

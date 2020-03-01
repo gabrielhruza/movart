@@ -3,3 +3,4 @@
 movart/local.py
 db.sqlite3
 /staticfiles/
+/env/

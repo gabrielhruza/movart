@@ -43,9 +43,13 @@ INSTALLED_APPS = [
     'pinax.messages',
     'crispy_forms',
     'django_filters',  
+    "fav",
     'cart',
     'core',
-    'tienda'
+    'tienda',
+    'denuncia',
+    'evento',
+    'reputacion'
 ]
 
 MIDDLEWARE = [
@@ -144,3 +148,12 @@ LOGIN_REDIRECT_URL = 'tienda:tiendalist'
 LOGIN_ERROR_URL = 'core:login'
 LOGOUT_REDIRECT_URL = 'core:home'
 SOCIAL_AUTH_NEW_USER_REDIRECT_URL = 'core:verificar_perfil'
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
