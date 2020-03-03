@@ -9,5 +9,7 @@ urlpatterns = [
 	path('ventas/', views.ventas, name='ventas'),
 	path('add/<pid>/<q>/', views.add, name='add'),
 	path('tracking/<trid>/', views.tracking, name='tracking'),
+	path('cancelar/<trid>/', views.cancelar, name='cancelar'),
+	path('suspender/<trid>/', views.suspender, name='suspender'),
 	#path('rem/<pid>/<q>/', views.rem, name='rem'),
 ]

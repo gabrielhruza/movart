@@ -55,9 +55,21 @@ def tracking(request, trid):
 	return render(request, 'transaccion/tracking.html', {'movs' : movs})
 
 
-# def escalar_pedido(request, trid):
+def cancelar(request, trid):
+	try:
+		tr 	= Transaccion.objects.get(id=trid)
+		mov = Movimiento(transaccion=tr)
+		mov.cancelar()
+	except Exception as e:
+		messages.error(request, e) 
+	return HttpResponseRedirect('/transaccion/compras')	
 
-# 	return 
 
-
-
+def suspender(request, trid):
+	try:
+		tr 	= Transaccion.objects.get(id=trid)
+		mov = Movimiento(transaccion=tr)
+		mov.suspender()
+	except Exception as e:
+		messages.error(request, e) 
+	return HttpResponseRedirect('/transaccion/compras')	
