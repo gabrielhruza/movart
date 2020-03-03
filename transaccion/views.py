@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib import messages
-from .models 		import Transaccion
+from .models 		import Transaccion, Movimiento
 from .forms 		import TransaccionForm
 from tienda.models  import Producto, Tienda
 
@@ -37,8 +37,27 @@ def add(request, pid, q):
 										precio=producto.precio,
 										cantidad = q )
 		t.save()
+		mov = Movimiento(transaccion=t)
+		mov.save()
 		messages.success(request, 'Se ha realizado correctamente!')
 		return HttpResponseRedirect('/transaccion/compras')   
 	except Exception as e:
 		messages.error(request, e)         
 	return HttpResponseRedirect('/transaccion/compras')
+
+
+
+def tracking(request, trid):
+	try:
+		movs = Movimiento.objects.filter(transaccion=trid)
+	except Exception as e:
+		messages.error(request, e) 
+	return render(request, 'transaccion/tracking.html', {'movs' : movs})
+
+
+# def escalar_pedido(request, trid):
+
+# 	return 
+
+
+

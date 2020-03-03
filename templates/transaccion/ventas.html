@@ -26,7 +26,7 @@
                         {{t.producto.nombre}}
                     </a>                </td>
                 <td>{{t.cantidad}}</td>
-                <td>Check out</td>
+                <td>{{ t.movimiento_set.all.0.get_estado_display }}</td>
             </tr>
             {% endfor %}
         </tbody>

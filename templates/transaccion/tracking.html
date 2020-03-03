@@ -2,14 +2,13 @@
 {% load static %}
 {% block title %}{% endblock %}
 {% block content %}
-<h3>Compras realizadas</h3>
-
+<h3>Tracking de compra</h3>
 
 <table class="table">
     <tr>
         <thead class="thead-light">
             <tr>
-            	<th scope="col">id</th>
+                <th scope="col">id</th>
                 <th scope="col">Cliente</th>
                 <th scope="col">Producto</th>
                 <th scope="col">Cantidad</th>
@@ -17,16 +16,16 @@
             </tr>
         </thead>
         <tbody>
-            {% for t in ts %}
+            {% for mov in movs %}
             <tr>
-            	<td>{{t.id}}</td>
-                <td>{{t.cliente}}</td>
+                <td>{{mov.id}}</td>
+                <td>{{mov.transaccion.cliente}}</td>
                 <td>
-                    <a href="{% url 'tienda:prodver' t.producto.id %}">
-                        {{t.producto.nombre}}
+                    <a href="{% url 'tienda:prodver' mov.transaccion.producto.id %}">
+                        {{mov.transaccion.producto.nombre}}
                     </a>                </td>
-                <td>{{t.cantidad}}</td>
-                <td>{{ t.movimiento_set.all.0.get_estado_display }}</td>
+                <td>{{mov.transaccion.cantidad}}</td>
+                <td>{{ mov.get_estado_display }}</td>
             </tr>
             {% endfor %}
         </tbody>

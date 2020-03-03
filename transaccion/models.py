@@ -20,17 +20,35 @@ class Transaccion(models.Model):
 class Movimiento(models.Model):
 	LISTO 		= 1
 	CONFIRMADO 	= 2
-	DESPACHADO 	= 3
+	ENVIADO 	= 3
 	RECIBIDO 	= 4
 	CANCELADO	= 5
 	SUSPENDIDO   = 6
 	ESTADO = (
 		(LISTO, 'Listo'),
 		(CONFIRMADO, 'Cofirmado'),
-		(DESPACHADO, 'Despachado'),
+		(ENVIADO, 'Enviado'),
 		(RECIBIDO, 'Recibido'),
 		(CANCELADO, 'Cancelado'),
 		(SUSPENDIDO, 'Suspendido'),
 	)
 	transaccion = models.ForeignKey(Transaccion, on_delete=models.CASCADE, default=None) 	
-	estado = models.PositiveSmallIntegerField( choices=ESTADO, default=LISTO ,)
+	estado 		= models.PositiveSmallIntegerField( choices=ESTADO, default=LISTO ,)
+	fecha 		= models.DateField(default=datetime.date.today)
+
+	
+	def __str__(self):
+		return self.get_estado_display()
+
+	def suspender(self):
+		self.estado = 6
+		return self
+
+	def cancelar(self):
+		self.estado = 5
+		return self
+
+	def escalar(self):
+		if self.estado <= 4:
+			self.estado += 1
+		return self
