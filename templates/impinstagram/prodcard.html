@@ -3,19 +3,10 @@
 	<div class="product-card card">
 	    <div class="card-body">
 	        <span class="text-secondary small text-uppercase"></span>
-	        <h3 class="h6 mb-2 font-weight-bold text-uppercase">{{ producto.nombre }}</h3>
-	        <div class="d-flex">
-	            <h4 class="h5 w-50 font-weight-bold color-bordo">${{ producto.precio }}</h4>    
-	            <div class="w-50 text-right">
-	            	<a href="{% url 'favs:padd' producto.id %}">
-	                <i class="fa fa-heart-o text-danger fa-2x" aria-hidden="true"></i>
-	                </a>
-	            </div>
-	        </div>
 	        <!--<img class="w-100 mt-2 mb-3" src="{{ producto.imagen_set.all.0.url }}" />-->
-	        <img class="w-100 mt-2 mb-3 rounded" src="{% static 'img/vasija.jpg' %}" />
-	        <a href="{% url 'tienda:prodver' producto.id %}" class="btn btn-outline-warning btn-block mb-2 rounded-pill">
-	            <i class="fa fa-eye"></i> Ver
+	        <img class="w-100 mt-2 mb-3 rounded" src="{{image}}" />
+	        <a href="{% url 'tienda:prodadd' shortcode %}" class="btn btn-outline-warning btn-block mb-2">
+	            <i class="fa fa-add"></i> Importar
 	        </a>		        
 	    </div>
 	</div>
