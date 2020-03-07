@@ -16,17 +16,14 @@
 	<aside class="col-sm-5 border-right">
 
 	<article class="gallery-wrap"> 
-	<div class="img-big-wrap" id="big">
-	  	<img src="{{ album.imgs.0 }}" class="d-block w-100">
+	<div class="img-big-wrap">
+	  	<img src="{% static 'img/movart-white.png' %}" class="d-block w-100" id="big">
 	</div> <!-- slider-product.// -->
 	<div class="img-small-wrap" id="minis">
-	  <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>
-	  <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>
-	  <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>
-	  <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>		
-	{% for key,value in album.imgs.items %}
-	  <div class="item-gallery"> <img src="{{ value }}"> </div>
-	{% endfor %}
+	  <div class="item-gallery"><img src="{% static 'img/movart-white.png' %}"></div>
+	  <div class="item-gallery"><img src="{% static 'img/movart-white.png' %}"></div>
+	  <div class="item-gallery"><img src="{% static 'img/movart-white.png' %}"></div>
+	  <div class="item-gallery"><img src="{% static 'img/movart-white.png' %}"></div>
 	</div> <!-- slider-nav.// -->
 	</article> <!-- gallery-wrap .end// -->
 	</aside>
@@ -106,10 +103,18 @@
 	    error: function () {
 	    },
 	    success: function (data) {
-	        alb = data.graphql.shortcode_media.edge_sidecar_to_children.edges;
-	        for (var i = 0; i < alb.length; i++) {
-	        	alb[i].node.display_url
-	        }
+		    media = data.graphql.shortcode_media
+		    document.getElementById('big').src = media.display_url;	       
+	        if (media.__typename == 'GraphSidecar'){
+	        	alb = data.graphql.shortcode_media.edge_sidecar_to_children.edges;
+	        	var minis = document.getElementById('minis');
+	        	for (var i = 0; i < minis.childElementCount; i++) {
+	        	 	minis = alb[i].node.display_url
+	        	}
+	        }else{
+	     		minis = document.getElementById('minis');   	
+	     		minis.innerHTML = '';
+	        }	        
 	    }
 	})
 	</script>
