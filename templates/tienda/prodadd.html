@@ -17,11 +17,15 @@
 
 	<article class="gallery-wrap"> 
 	<div class="img-big-wrap">
-	  <div> <a href="#">
-	  	<img src="{{ album.imgs.0 }}" class="d-block w-100"></a>
+	  <div>
+	  	<img src="{{ album.imgs.0 }}" class="d-block w-100">
 	  </div>
 	</div> <!-- slider-product.// -->
 	<div class="img-small-wrap">
+	  <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>
+	  <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>
+	  <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>
+	  <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>		
 	{% for key,value in album.imgs.items %}
 	  <div class="item-gallery"> <img src="{{ value }}"> </div>
 	{% endfor %}
