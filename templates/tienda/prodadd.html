@@ -20,10 +20,18 @@
 	  	<img src="{% static 'img/movart-white.png' %}" class="d-block w-100" id="big">
 	</div> <!-- slider-product.// -->
 	<div class="img-small-wrap" id="minis">
-	  <div class="item-gallery"><img src="{% static 'img/movart-white.png' %}"></div>
-	  <div class="item-gallery"><img src="{% static 'img/movart-white.png' %}"></div>
-	  <div class="item-gallery"><img src="{% static 'img/movart-white.png' %}"></div>
-	  <div class="item-gallery"><img src="{% static 'img/movart-white.png' %}"></div>
+	  <div class="item-gallery">
+	  	<img onclick="change()" class="mini" src="{% static 'img/movart-white.png' %}">
+	  </div>
+	  <div class="item-gallery">
+	  	<img onclick="change()" class="mini" src="{% static 'img/movart-white.png' %}">
+	  </div>
+	  <div class="item-gallery">
+	  	<img onclick="change()" class="mini" src="{% static 'img/movart-white.png' %}">
+	  </div>
+	  <div class="item-gallery">
+	  	<img onclick="change()" class="mini" src="{% static 'img/movart-white.png' %}">
+	  </div>
 	</div> <!-- slider-nav.// -->
 	</article> <!-- gallery-wrap .end// -->
 	</aside>
@@ -95,7 +103,7 @@
 
 
 {% block scripts %}
-    {{ block.super }}
+	{{ block.super }}
 	<script type="text/javascript">
 	$.ajax({
 	    type: 'GET',
@@ -107,16 +115,16 @@
 		    document.getElementById('big').src = media.display_url;	       
 	        if (media.__typename == 'GraphSidecar'){
 	        	alb = data.graphql.shortcode_media.edge_sidecar_to_children.edges;
-	        	var minis = document.getElementById('minis');
-	        	for (var i = 0; i < minis.childElementCount; i++) {
-	        	 	minis = alb[i].node.display_url
+	        	minis = document.getElementsByClassName('mini');
+	        	for (var i = 0; i < minis.length; i++) {
+	        	 	minis[i].src = alb[i].node.display_url;
 	        	}
 	        }else{
 	     		minis = document.getElementById('minis');   	
 	     		minis.innerHTML = '';
 	        }	        
 	    }
-	})
+	});
 	</script>
 {% endblock %}
 {% endblock %}
