@@ -61,7 +61,7 @@ def prodadd(request, url):
 				messages.error(request, e)
 	else:
 		form = ProductoForm()
-	return render(request, 'tienda/prodadd.html', {'form': form})
+	return render(request, 'tienda/prodadd.html', {'form': form, 'url':url})
 
 
 @login_required

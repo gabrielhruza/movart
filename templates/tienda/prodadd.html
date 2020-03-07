@@ -16,12 +16,10 @@
 	<aside class="col-sm-5 border-right">
 
 	<article class="gallery-wrap"> 
-	<div class="img-big-wrap">
-	  <div>
+	<div class="img-big-wrap" id="big">
 	  	<img src="{{ album.imgs.0 }}" class="d-block w-100">
-	  </div>
 	</div> <!-- slider-product.// -->
-	<div class="img-small-wrap">
+	<div class="img-small-wrap" id="minis">
 	  <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>
 	  <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>
 	  <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>
@@ -87,7 +85,7 @@
 	<hr>
 
 	<div class="text-center">
-		<button type="submit" class="btn btn-movart text-uppercase"><i class="fa fa-check"></i> Enviar </button>
+		<button type="submit" class="btn btn-warning text-uppercase"><i class="fa fa-check"></i> Enviar </button>
 		<a role="button" href="{% url 'core:home' %}" class="btn btn-light text-uppercase">
 		<i class="fa fa-times"></i> Cancelar </a>
 	</div>
@@ -98,4 +96,22 @@
 </div> <!-- card.// -->
 </form>
 
+
+{% block scripts %}
+    {{ block.super }}
+	<script type="text/javascript">
+	$.ajax({
+	    type: 'GET',
+	    url: "https://www.instagram.com/p/{{url}}/?__a=1",
+	    error: function () {
+	    },
+	    success: function (data) {
+	        alb = data.graphql.shortcode_media.edge_sidecar_to_children.edges;
+	        for (var i = 0; i < alb.length; i++) {
+	        	alb[i].node.display_url
+	        }
+	    }
+	})
+	</script>
+{% endblock %}
 {% endblock %}
