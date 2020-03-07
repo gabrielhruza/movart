@@ -16,7 +16,7 @@
 
 
 <div id="django_recent_media_wall">
-    {% instagram_user_recent_media gabi.hruza %}
+    {% instagram_user_recent_media username %}
     {% for media in recent_media %}
         <div class="django_instagram_media_wall_item">
             <a href="//instagram.com/p/{{ media.shortcode }}" target="_blank">
