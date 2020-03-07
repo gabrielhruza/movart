@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from pinax.messages.models import Message
 from core.models import Perfil
 from reputacion.models import Reputacion
@@ -8,6 +9,7 @@ from .forms 	import TiendaForm, ProductoForm, ProdconsForm
 from .filters 	import ProductoFilter
 
 
+@login_required
 def tiendadd(request):
 	try:
 		tienda = Tienda.objects.get(usuario=request.user)
@@ -42,6 +44,7 @@ def prodver(request, pid):
 	return render(request, 'tienda/prodver.html', {'producto': producto})
 
 
+@login_required
 def prodadd(request, url):
 	if request.method == 'POST':
 		form = ProductoForm(request.POST)
@@ -61,6 +64,7 @@ def prodadd(request, url):
 	return render(request, 'tienda/prodadd.html', {'form': form})
 
 
+@login_required
 def prodedit(request, pid):
 	try:
 		prod = Producto.objects.get(id=pid)
@@ -82,7 +86,7 @@ def prodedit(request, pid):
 	return render(request, 'tienda/prodadd.html', {'form': form})
 
 
-#inventario de productos de por tienda
+#inventario de productos por tienda
 def prodlist(request, tid):
 	tienda = Tienda.objects.get(id=tid)
 	t = 'Bienvenido a ' + tienda.usuario.username
@@ -97,6 +101,7 @@ def prodlistall(request):
 	return render(request, 'tienda/prodlist.html', {'filter': f, 'titulo':t})
 
 
+@login_required
 def prodcons(request, pid):
 	if request.method == 'POST':
 		form = ProdconsForm(request.POST)

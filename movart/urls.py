@@ -19,6 +19,7 @@ urlpatterns = [
     path('evento/', include('evento.urls', namespace="evento")),
     path('reputacion/', include('reputacion.urls', namespace="reputacion")),
     path('transaccion/', include('transaccion.urls', namespace="transaccion")),
+    path('impinstagram/', include('impinstagram.urls', namespace="impinstagram")),
 
 
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

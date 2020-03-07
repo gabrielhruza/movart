@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load instagram_client %}
+{% block title %}{% endblock %}
+{% block content %}
+<h3>{{ titulo }}</h3>
+
+
+<div class="row">
+	{% for prod in filter.qs %}
+		{% include 'impinstagram/prodcard.html' with producto=prod %}
+	{% empty %}
+		No hay productos registrados
+	{% endfor %}
+</div>
+
+
+<div id="django_recent_media_wall">
+    {% instagram_user_recent_media gabi.hruza %}
+    {% for media in recent_media %}
+        <div class="django_instagram_media_wall_item">
+            <a href="//instagram.com/p/{{ media.shortcode }}" target="_blank">
+                <img src="{{ media.thumbnail_src }}"/>
+                <span>{{ media.edge_media_to_caption.edges.0.node.text }}</span>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+
+{#
+# let url = "https://www.instagram.com/"+username;
+# $.ajax({
+#     type: 'GET',
+#     url: url,
+#     error: function () {
+#         //..
+#     },
+#     success: function (data) {
+#         data = JSON.parse(data.split("window._sharedData = ")[1].split(";</script>")[0]).entry_data.ProfilePage[0].graphql;
+#         console.log(data);
+#     }
+# })#}

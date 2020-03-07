@@ -24,10 +24,20 @@ class Producto(models.Model):
     class Meta:
         unique_together = ('tienda', 'shortcode')
 
-    
     def visita(self):
         self.visitas += 1
         self.save()
+
+    def save_album(self, urls):
+        for url in urls:
+            try:
+                i = Imagen(producto=self, url=url)
+                i.save()
+            except Exception as e:
+                raise e
+
+    #def get_album(self):
+                    
 
 
 class Imagen(models.Model):
