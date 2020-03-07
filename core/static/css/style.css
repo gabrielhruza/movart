@@ -117,6 +117,17 @@ body {
   content: "\f16d";
 }
 
+.btn-instagram-import{
+	background-color: #49769c;
+	border-color: #49769c;
+	color: white;
+}
+
+.btn-instagram-import:hover{
+	color: white !important;
+	background-color: #3c6588;
+}
+
 .btn-movart{
 	background-color: #f7da41;
 	border-color: #f7da41;
