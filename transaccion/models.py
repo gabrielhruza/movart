@@ -11,6 +11,7 @@ class Transaccion(models.Model):
 	cantidad    = models.PositiveIntegerField(default=1)
 	precio      = models.PositiveIntegerField(default=1)
 	fecha       = models.DateField(default=datetime.date.today)
+	estado_act 	= models.PositiveIntegerField(default=1)
 
 	def __str__(self):
 		return self.cliente.username
@@ -43,16 +44,19 @@ class Movimiento(models.Model):
 
 	def suspender(self):
 		self.estado = 6
+		self.transaccion.estado_act = self.estado
 		self.save()
 		return self
 
 	def cancelar(self):
 		self.estado = 5
+		self.transaccion.estado_act = self.estado
 		self.save()
 		return self
 
 	def escalar(self):
 		if self.estado <= 4:
 			self.estado += 1
+			self.transaccion.estado_act = self.estado			
 		self.save()
 		return self

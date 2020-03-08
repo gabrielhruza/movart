@@ -21,7 +21,7 @@ def compras(request):
 def ventas(request):
 	try:
 		tienda = Tienda.objects.get(usuario=request.user)
-		ts = Transaccion.objects.filter(tienda=tienda)
+		ts = Transaccion.objects.filter(tienda=tienda).exclude(estado_act=1)
 	except Exception as e:
 		messages.error(request, e)
 		ts = {} 			
@@ -76,6 +76,17 @@ def suspender(request, trid):
 		tr 	= Transaccion.objects.get(id=trid)
 		mov = Movimiento(transaccion=tr)
 		mov.suspender()
+	except Exception as e:
+		messages.error(request, e) 
+	return HttpResponseRedirect('/transaccion/compras')	
+
+
+@login_required
+def confirmar(request, trid):
+	try:
+		tr 	= Transaccion.objects.get(id=trid)
+		mov = Movimiento(transaccion=tr)
+		mov.escalar()
 	except Exception as e:
 		messages.error(request, e) 
 	return HttpResponseRedirect('/transaccion/compras')	
