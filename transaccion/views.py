@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models 		import Transaccion, Movimiento
 from .forms 		import TransaccionForm
 from tienda.models  import Producto, Tienda
 
 
-
+@login_required
 def compras(request):
 	try:
 		ts = Transaccion.objects.filter(cliente=request.user)
@@ -16,6 +17,7 @@ def compras(request):
 	return render(request, 'transaccion/compras.html', {'ts' : ts})
 
 
+@login_required
 def ventas(request):
 	try:
 		tienda = Tienda.objects.get(usuario=request.user)
@@ -26,6 +28,7 @@ def ventas(request):
 	return render(request, 'transaccion/ventas.html', {'ts' : ts})
 
 
+@login_required
 def add(request, pid, q):
 	try:
 		producto 	= Producto.objects.get(id=pid)
@@ -47,6 +50,7 @@ def add(request, pid, q):
 
 
 
+@login_required
 def tracking(request, trid):
 	try:
 		movs = Movimiento.objects.filter(transaccion=trid)
@@ -55,6 +59,7 @@ def tracking(request, trid):
 	return render(request, 'transaccion/tracking.html', {'movs' : movs})
 
 
+@login_required
 def cancelar(request, trid):
 	try:
 		tr 	= Transaccion.objects.get(id=trid)
@@ -65,6 +70,7 @@ def cancelar(request, trid):
 	return HttpResponseRedirect('/transaccion/compras')	
 
 
+@login_required
 def suspender(request, trid):
 	try:
 		tr 	= Transaccion.objects.get(id=trid)

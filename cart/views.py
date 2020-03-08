@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .cart import Cart
 from tienda.models import Producto
 
 
+@login_required
 def add_to_cart(request, product_id, quantity):
 	try:
 		product = Producto.objects.get(id=product_id)
@@ -15,6 +17,7 @@ def add_to_cart(request, product_id, quantity):
 	return render(request, 'cart/cart.html', {'cart': Cart(request)})
 	
 
+@login_required
 def remove_from_cart(request, product_id):
 	try:
 		product = Producto.objects.get(id=product_id)
@@ -26,6 +29,7 @@ def remove_from_cart(request, product_id):
 	return render(request, 'cart/cart.html', {'cart': Cart(request)})
 
 
+@login_required
 def get_cart(request):
 	return render(request, 'cart/cart.html', {'cart': Cart(request)})
 	
