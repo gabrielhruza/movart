@@ -37,14 +37,14 @@
                 </td>
                 <td>{{t.precio}}</td>
                 <td>{{ t.estado_act }}</td>
-                <td>
+                <td>               
                     {% if t.estado_act == 1%}
                     <a href="{% url 'transaccion:escalar' t.id %}" class="btn btn-sm btn-primary" onclick="confirm('Confirma?');">
-                        <i class="fas fa-check-circle"></i> Confirmar
+                        <i class="fas fa-check-circle"></i>
                     </a>                
                     {% elif t.estado_act == 3%}
                     <a href="{% url 'transaccion:escalar' t.id %}" class="btn btn-sm btn-success" onclick="confirm('Confirma?');">
-                        <i class="fas fa-check-circle"></i> Recibido
+                        <i class="fas fa-check-circle"></i>
                     </a>
                     {% elif t.estado_act == 4%}
                     {% else %}
@@ -52,6 +52,12 @@
                         Espera de la tienda
                     </span>
                     {% endif %}                     
+                    <a href="{% url 'transaccion:suspender' t.id %}" class="btn btn-sm btn-warning" onclick="confirm('Confirma?');">
+                        <i class="fas fa-pause"></i>
+                    </a>
+                    <a href="{% url 'transaccion:cancelar' t.id %}" class="btn btn-sm btn-danger" onclick="confirm('Confirma?');">
+                        <i class="fas fa-window-close"></i>
+                    </a>                    
                 </td>
             </tr>
             {% endfor %}

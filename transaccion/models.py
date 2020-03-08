@@ -49,12 +49,14 @@ class Movimiento(models.Model):
 	def suspender(self):
 		self.estado = 6
 		self.transaccion.estado_act = self.estado
+		self.transaccion.guardar()
 		self.save()
 		return self
 
 	def cancelar(self):
 		self.estado = 5
 		self.transaccion.estado_act = self.estado
+		self.transaccion.guardar()
 		self.save()
 		return self
 
