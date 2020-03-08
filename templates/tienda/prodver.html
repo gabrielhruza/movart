@@ -75,4 +75,31 @@
 	</aside> <!-- col.// -->
 	</div> <!-- row.// -->
 </div> <!-- card.// -->
+
+{% endblock %}
+
+{% block scripts %}
+	{{ block.super }}
+	<script type="text/javascript">
+	$.ajax({
+	    type: 'GET',
+	    url: "https://www.instagram.com/p/{{producto.shortcode}}/?__a=1",
+	    error: function () {
+	    },
+	    success: function (data) {
+		    media = data.graphql.shortcode_media
+		    document.getElementById('big').src = media.display_url;	       
+	        if (media.__typename == 'GraphSidecar'){
+	        	alb = data.graphql.shortcode_media.edge_sidecar_to_children.edges;
+	        	minis = document.getElementsByClassName('mini');
+	        	for (var i = 0; i < minis.length; i++) {
+	        	 	minis[i].src = alb[i].node.display_url;
+	        	}
+	        }else{
+	     		minis = document.getElementById('minis');   	
+	     		minis.innerHTML = '';
+	        }	        
+	    }
+	});
+	</script>
 {% endblock %}

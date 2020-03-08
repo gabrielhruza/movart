@@ -21,4 +21,23 @@
 		No hay productos registrados
 	{% endfor %}
 </div>
+
+{% endblock %}
+
+{% block scripts %}
+	{{ block.super }}
+	{% for prod in filter.qs %}
+	<script type="text/javascript">
+	$.ajax({
+	    type: 'GET',
+	    url: "https://www.instagram.com/p/{{prod.shortcode}}/?__a=1",
+	    error: function () {
+	    },
+	    success: function (data) {
+		    media = data.graphql.shortcode_media
+		    document.getElementById('img-{{prod.id}}').src = media.display_url;
+	    }
+	});
+	</script>
+	{% endfor %}
 {% endblock %}
