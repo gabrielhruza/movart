@@ -8,15 +8,16 @@
 	            <h4 class="h5 w-50 font-weight-bold color-bordo">${{ producto.precio }}</h4>    
 	            <div class="w-50 text-right">
 	            	<a href="{% url 'favs:padd' producto.id %}">
-	                <i class="fa fa-heart-o text-danger fa-2x" aria-hidden="true"></i>
+	                <i class="fa fa-heart-o text-danger" aria-hidden="true"></i>
 	                </a>
 	            </div>
 	        </div>
 	        <!--<img class="w-100 mt-2 mb-3" src="{{ producto.imagen_set.all.0.url }}" />-->
-	        <img class="w-100 mt-2 mb-3 rounded" src="{% static 'img/vasija.jpg' %}" />
+	        <img id="img-{{producto.id}}" class="w-100 mt-2 mb-3 rounded" src="{% static 'img/movart-white.png' %}" height="210px" />
 	        <a href="{% url 'tienda:prodver' producto.id %}" class="btn btn-outline-warning btn-block mb-2 rounded-pill">
 	            <i class="fa fa-eye"></i> Ver
 	        </a>		        
 	    </div>
 	</div>
 </div>
+
