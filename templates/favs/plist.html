@@ -12,3 +12,21 @@
 {% endfor %}
 </div>
 {% endblock %}
+
+{% block scripts %}
+	{{ block.super }}
+	{% for fav in favs %}
+	<script type="text/javascript">
+	$.ajax({
+	    type: 'GET',
+	    url: "https://www.instagram.com/p/{{fav.target.shortcode}}/?__a=1",
+	    error: function () {
+	    },
+	    success: function (data) {
+		    media = data.graphql.shortcode_media
+		    document.getElementById('img-{{fav.target.id}}').src = media.display_url;
+	    }
+	});
+	</script>
+	{% endfor %}
+{% endblock %}
