@@ -27,13 +27,13 @@
                     </a>                
                 </td>
                 <td>{{t.cantidad}}</td>
-                <td>{{ t.movimiento_set.all.0.get_estado_display }}</td>
+                <td>{{ t.estado_act }}</td>
                 <td>
-                    {% if t.estado_act == 1%}
-                    <a href="{% url 'tienda:prodver' t.producto.id %}">
-                        {{t.producto.nombre}}
+                {% if t.estado_act == 2%}
+                    <a href="{% url 'transaccion:escalar' t.id %}" class="btn btn-sm btn-success" onclick="confirm('Confirma?');">
+                        <i class="fas fa-box"></i> Retirar
                     </a>                
-                    {% endif %}
+                {% endif %}                     
                 </td>
             </tr>
             {% endfor %}

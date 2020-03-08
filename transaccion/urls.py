@@ -11,6 +11,6 @@ urlpatterns = [
 	path('tracking/<trid>/', views.tracking, name='tracking'),
 	path('cancelar/<trid>/', views.cancelar, name='cancelar'),
 	path('suspender/<trid>/', views.suspender, name='suspender'),
-	path('confirmar/<trid>/', views.confirmar, name='confirmar'),
+	path('escalar/<trid>/', views.escalar, name='escalar'),
 	#path('rem/<pid>/<q>/', views.rem, name='rem'),
 ]

@@ -16,24 +16,28 @@ class Transaccion(models.Model):
 	def __str__(self):
 		return self.cliente.username
 
+	def guardar(self):
+		self.save()
+		return self
+
 
 class Movimiento(models.Model):
-	LISTO       = 1
+	ENPROGRESO  = 1
 	CONFIRMADO  = 2
-	ENVIADO     = 3
+	RETIRAR     = 3
 	RECIBIDO    = 4
 	CANCELADO   = 5
 	SUSPENDIDO   = 6
 	ESTADO = (
-		(LISTO, 'Listo'),
-		(CONFIRMADO, 'Cofirmado'),
-		(ENVIADO, 'Enviado'),
+		(ENPROGRESO, 'En progreso'),
+		(CONFIRMADO, 'Confirmado'),
+		(RETIRAR, 'Retirar'),
 		(RECIBIDO, 'Recibido'),
 		(CANCELADO, 'Cancelado'),
 		(SUSPENDIDO, 'Suspendido'),
 	)
 	transaccion = models.ForeignKey(Transaccion, on_delete=models.CASCADE, default=None)    
-	estado      = models.PositiveSmallIntegerField( choices=ESTADO, default=LISTO ,)
+	estado      = models.PositiveSmallIntegerField( choices=ESTADO, default=ENPROGRESO ,)
 	fecha       = models.DateField(default=datetime.date.today)
 
 	class Meta:
@@ -56,8 +60,8 @@ class Movimiento(models.Model):
 
 	def escalar(self):
 		if self.estado <= 4:
-			self.estado += 1
+			self.estado = self.estado + 1
 			self.transaccion.estado_act = self.estado
-			self.transaccion.save()			
+			self.transaccion.guardar()			
 			self.save()
 		return self

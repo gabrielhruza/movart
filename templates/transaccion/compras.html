@@ -39,10 +39,19 @@
                 <td>{{ t.estado_act }}</td>
                 <td>
                     {% if t.estado_act == 1%}
-                    <button href="{% url 'transaccion:confirmar' t.id %}" class="btn btn-sm btn-primary" onclick="confirm('Confirma?');">
-                        <i class="fas fa-check-circle"></i>Confirmar
-                    </button>                
-                    {% endif %}
+                    <a href="{% url 'transaccion:escalar' t.id %}" class="btn btn-sm btn-primary" onclick="confirm('Confirma?');">
+                        <i class="fas fa-check-circle"></i> Confirmar
+                    </a>                
+                    {% elif t.estado_act == 3%}
+                    <a href="{% url 'transaccion:escalar' t.id %}" class="btn btn-sm btn-success" onclick="confirm('Confirma?');">
+                        <i class="fas fa-check-circle"></i> Recibido
+                    </a>
+                    {% elif t.estado_act == 4%}
+                    {% else %}
+                    <span class="badge badge-pill badge-secondary">
+                        Espera de la tienda
+                    </span>
+                    {% endif %}                     
                 </td>
             </tr>
             {% endfor %}

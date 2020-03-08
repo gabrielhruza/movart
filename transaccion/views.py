@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -77,15 +77,17 @@ def suspender(request, trid):
 		mov.suspender()
 	except Exception as e:
 		messages.error(request, e) 
-	return HttpResponseRedirect('/transaccion/compras')	
+	return HttpResponseRedirect('/transaccion/compras')		
 
 
 @login_required
-def confirmar(request, trid):
+def escalar(request, trid):
 	try:
 		tr 	= Transaccion.objects.get(id=trid)
-		mov = Movimiento(transaccion=tr)
+		mov = Movimiento(transaccion=tr, estado=tr.estado_act)
 		mov.escalar()
+		messages.success(request, 'Se ha realizado con éxito!') 
 	except Exception as e:
 		messages.error(request, e) 
-	return HttpResponseRedirect('/transaccion/compras')	
+	url = request.META.get('HTTP_REFERER')
+	return redirect(url)	
