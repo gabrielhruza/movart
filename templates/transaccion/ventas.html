@@ -20,7 +20,10 @@
             {% for t in ts %}
             <tr>
                 <td>{{t.id}}</td>
-                <td>{{t.cliente}}</td>
+                <td>
+                    <a href="{% url 'tienda:tiendaver' t.cliente.id %}">{{t.cliente}}
+                    </a>  
+                </td>
                 <td>
                     <a href="{% url 'tienda:prodver' t.producto.id %}">
                         {{t.producto.nombre}}
