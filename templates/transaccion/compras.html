@@ -14,6 +14,7 @@
                 <th scope="col">Producto</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Estado</th>
+                <th scope="col">Accción</th>
             </tr>
         </thead>
         <tbody>
@@ -35,7 +36,14 @@
                 </a>
                 </td>
                 <td>{{t.precio}}</td>
-                <td>{{ t.movimiento_set.all.0.get_estado_display }}</td>
+                <td>{{ t.estado_act }}</td>
+                <td>
+                    {% if t.estado_act == 1%}
+                    <button href="{% url 'transaccion:confirmar' t.id %}" class="btn btn-sm btn-primary" onclick="confirm('Confirma?');">
+                        <i class="fas fa-check-circle"></i>Confirmar
+                    </button>                
+                    {% endif %}
+                </td>
             </tr>
             {% endfor %}
         </tbody>

@@ -57,6 +57,7 @@ class Movimiento(models.Model):
 	def escalar(self):
 		if self.estado <= 4:
 			self.estado += 1
-			self.transaccion.estado_act = self.estado			
-		self.save()
+			self.transaccion.estado_act = self.estado
+			self.transaccion.save()			
+			self.save()
 		return self

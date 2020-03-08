@@ -49,7 +49,6 @@ def add(request, pid, q):
 	return HttpResponseRedirect('/transaccion/compras')
 
 
-
 @login_required
 def tracking(request, trid):
 	try:

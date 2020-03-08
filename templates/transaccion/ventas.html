@@ -13,6 +13,7 @@
                 <th scope="col">Producto</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Estado</th>
+                <th scope="col">Acción</th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +28,13 @@
                 </td>
                 <td>{{t.cantidad}}</td>
                 <td>{{ t.movimiento_set.all.0.get_estado_display }}</td>
+                <td>
+                    {% if t.estado_act == 1%}
+                    <a href="{% url 'tienda:prodver' t.producto.id %}">
+                        {{t.producto.nombre}}
+                    </a>                
+                    {% endif %}
+                </td>
             </tr>
             {% endfor %}
         </tbody>
