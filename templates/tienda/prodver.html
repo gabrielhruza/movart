@@ -63,7 +63,7 @@
 	<hr>
 
 	<div class="text-center">
-		<a href="{% url 'transaccion:add' producto.id producto.tienda.id %}" class="btn btn-warning text-uppercase">
+		<a href="{% url 'transaccion:add' producto.id 1 %}" class="btn btn-warning text-uppercase">
 			<i class="fa fa-handshake-o"></i> Comprar
 		</a>
 		<a role="button" href="{% url 'tienda:prodcons' producto.id %}" class="btn btn-primary">

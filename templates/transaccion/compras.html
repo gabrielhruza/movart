@@ -12,7 +12,7 @@
             	<th scope="col">id</th>
                 <th scope="col">Tienda</th>
                 <th scope="col">Producto</th>
-                <th scope="col">Cantidad</th>
+                <th scope="col">Precio</th>
                 <th scope="col">Estado</th>
             </tr>
         </thead>
@@ -30,7 +30,7 @@
                     {{t.producto.nombre}}
                 </a>
                 </td>
-                <td>{{t.cantidad}}</td>
+                <td>{{t.precio}}</td>
                 <td>{{ t.movimiento_set.all.0.get_estado_display }}</td>
             </tr>
             {% endfor %}
