@@ -22,6 +22,8 @@
 	{% endfor %}
 </div>
 
+{% endblock %}
+
 {% block scripts %}
 	{{ block.super }}
 	{% for prod in filter.qs %}
@@ -40,4 +42,3 @@
 	{% endfor %}
 {% endblock %}
 
-{% endblock %}
