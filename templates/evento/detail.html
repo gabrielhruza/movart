@@ -1,18 +1,23 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% load widget_tweaks %}
+{% load i18n %}
+
 {% block title %}{% endblock %}
 {% block content %}
 
-<div class="mb-3">
-	<h3>{{ evento.nombre }}</h3>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{ evento.nombre }}</h5>
+    <p class="card-text">{{ evento.descripcion }}</p>
+    <p class="card-text">
+    	{% language 'es' %}
+    	<small class="text-muted">Inicio: {{ evento.inicio }} - Fin: {{ evento.fin }}</small>
+    	{% endlanguage %}
+    </p>
+  </div>
+  <img class="card-img-bottom" src="{{ evento.flyer }}" alt="Card image cap">
 </div>
-
-
-<p>Fecha de inicio: <i>{{ evento.inicio }}</i></p>
-<p>Fecha de fin: <i>{{ evento.fin }}</i></p>
-<p>Descripcion <i>{{ evento.descripcion }}</i></p>
-<p>Flyer: <i>{{ evento.flyer }}</i></p>
-
 
 {% endblock %}
