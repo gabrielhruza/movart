@@ -6,23 +6,9 @@
 	<div class="row">
 	<aside class="col-sm-5 border-right">
 	<article class="gallery-wrap"> 
-	<div class="img-big-wrap">
-	  	<img src="{% static 'img/movart-white.png' %}" class="d-block w-100" id="big">
-	</div> <!-- slider-product.// -->
-	<div class="img-small-wrap" id="minis">
-	  <div class="item-gallery">
-	  	<img onclick="change()" class="mini" src="{% static 'img/movart-white.png' %}">
-	  </div>
-	  <div class="item-gallery">
-	  	<img onclick="change()" class="mini" src="{% static 'img/movart-white.png' %}">
-	  </div>
-	  <div class="item-gallery">
-	  	<img onclick="change()" class="mini" src="{% static 'img/movart-white.png' %}">
-	  </div>
-	  <div class="item-gallery">
-	  	<img onclick="change()" class="mini" src="{% static 'img/movart-white.png' %}">
-	  </div>
-	</div> <!-- slider-nav.// -->
+	{% with 'img/'|add:producto.tienda.usuario.username|add:'/'|add:producto.imagen_set.all.0.url as image_static %}
+	<img id="img-{{producto.id}}" class="w-100 mt-2 mb-3 rounded" src="{% static image_static %}" />
+	{% endwith %}
 	</article> <!-- gallery-wrap .end// -->
 
 	</aside>
