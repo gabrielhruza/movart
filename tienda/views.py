@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from pinax.messages.models import Message
 from core.models import Perfil
 from reputacion.models import Reputacion
-from .models 	import Tienda, Producto
+from .models 	import Tienda, Producto, Imagen
 from .forms 	import TiendaForm, ProductoForm, ProdconsForm
 from .filters 	import ProductoFilter
 
@@ -45,7 +45,7 @@ def prodver(request, pid):
 
 
 @login_required
-def prodadd(request, url):
+def prodadd(request, url, img):
 	if request.method == 'POST':
 		form = ProductoForm(request.POST)
 		if form.is_valid():
@@ -55,13 +55,17 @@ def prodadd(request, url):
 				prod.shortcode = url
 				prod.save()
 				form.save_m2m()#save the many-to-many data for the form.
+				imagen = Imagen()
+				imagen.url = img
+				imagen.producto = prod
+				imagen.save()
 				messages.success(request, 'Se ha realizado con éxito!')
 				return redirect('/')
 			except Exception as e:
 				messages.error(request, e)
 	else:
 		form = ProductoForm()
-	return render(request, 'tienda/prodadd.html', {'form': form, 'url':url})
+	return render(request, 'tienda/prodadd.html', {'form': form, 'url':url, 'img':img})
 
 
 @login_required

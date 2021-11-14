@@ -12,7 +12,7 @@ class Tienda(models.Model):
 
 
 class Producto(models.Model):
-    tienda = models.ForeignKey(Tienda, on_delete=models.CASCADE)
+    tienda       = models.ForeignKey(Tienda, on_delete=models.CASCADE)
     nombre 	     = models.CharField(max_length=100)
     descripcion  = models.CharField(max_length=500)
     shortcode    = models.CharField(max_length=100)

@@ -14,25 +14,12 @@
 <div class="card">
 	<div class="row">
 	<aside class="col-sm-5 border-right">
-
 	<article class="gallery-wrap"> 
 	<div class="img-big-wrap">
-	  	<img src="{% static 'img/movart-white.png' %}" class="d-block w-100" id="big">
+	{% with 'img/'|add:request.user.username|add:'/'|add:img as image_static %}
+	<img id="img-{{producto.id}}" class="w-100 mt-2 mb-3 rounded" src="{% static image_static %}" />
+	{% endwith %}
 	</div> <!-- slider-product.// -->
-	<div class="img-small-wrap" id="minis">
-	  <div class="item-gallery">
-	  	<img onclick="change()" class="mini" src="{% static 'img/movart-white.png' %}">
-	  </div>
-	  <div class="item-gallery">
-	  	<img onclick="change()" class="mini" src="{% static 'img/movart-white.png' %}">
-	  </div>
-	  <div class="item-gallery">
-	  	<img onclick="change()" class="mini" src="{% static 'img/movart-white.png' %}">
-	  </div>
-	  <div class="item-gallery">
-	  	<img onclick="change()" class="mini" src="{% static 'img/movart-white.png' %}">
-	  </div>
-	</div> <!-- slider-nav.// -->
 	</article> <!-- gallery-wrap .end// -->
 	</aside>
 
@@ -105,26 +92,4 @@
 
 {% block scripts %}
 	{{ block.super }}
-	<script type="text/javascript">
-	$.ajax({
-	    type: 'GET',
-	    url: "https://www.instagram.com/p/{{url}}/?__a=1",
-	    error: function () {
-	    },
-	    success: function (data) {
-		    media = data.graphql.shortcode_media
-		    document.getElementById('big').src = media.display_url;	       
-	        if (media.__typename == 'GraphSidecar'){
-	        	alb = data.graphql.shortcode_media.edge_sidecar_to_children.edges;
-	        	minis = document.getElementsByClassName('mini');
-	        	for (var i = 0; i < minis.length; i++) {
-	        	 	minis[i].src = alb[i].node.display_url;
-	        	}
-	        }else{
-	     		minis = document.getElementById('minis');   	
-	     		minis.innerHTML = '';
-	        }	        
-	    }
-	});
-	</script>
 {% endblock %}
