@@ -74,7 +74,8 @@ def prodadd(request, url, img):
 @login_required
 def prodedit(request, pid):
 	try:
-		prod = Producto.objects.get(id=pid)
+		prod 	= Producto.objects.get(id=pid)
+		imagen  = Imagen.objects.get(producto_id=prod.id)
 	except Exception as e:
 		messages.error(request, e)
 	if request.method == 'POST':
@@ -90,7 +91,8 @@ def prodedit(request, pid):
 				messages.error(request, e)
 	else:
 		form = ProductoForm(instance=prod)
-	return render(request, 'tienda/prodadd.html', {'form': form})
+		imagen  = Imagen.objects.get(producto_id=prod.id)
+	return render(request, 'tienda/prodadd.html', {'form': form, 'url':prod.shortcode, 'img':imagen.url})
 
 
 #inventario de productos por tienda

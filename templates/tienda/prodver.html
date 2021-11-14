@@ -49,20 +49,23 @@
 	<hr>
 
 	<div class="text-center">
-		<a href="{% url 'transaccion:add' producto.id 1 %}" class="btn btn-warning text-uppercase">
+		<a href="{% url 'transaccion:add' producto.id 1 %}" class="btn btn-warning text-uppercase btn-sm">
 			<i class="fa fa-handshake-o"></i> Comprar
 		</a>
-		<a role="button" href="{% url 'tienda:prodcons' producto.id %}" class="btn btn-primary">
+		<a role="button" href="{% url 'tienda:prodcons' producto.id %}" class="btn btn-primary btn-sm">
 			<i class="fa fa-envelope"></i> Consultar
 		</a>
-		<a role="button" href="{% url 'tienda:prodlist' producto.tienda.id %}" class="btn btn-light">
+		<a role="button" href="{% url 'tienda:prodlist' producto.tienda.id %}" class="btn btn-light btn-sm">
 			<i class="fa fa-times"></i> Volver
 		</a>		
 		{% if request.user.username == producto.tienda.usuario.username %}
-		<a role="button" href="{% url 'tienda:proddelete' producto.id %}" class="btn btn-danger">
+		<a role="button" href="{% url 'tienda:prodedit' producto.id %}" class="btn btn-secondary btn-sm">
+			<i class="fa fa-pencil"></i> Editar
+		</a>
+
+		<a role="button" href="{% url 'tienda:proddelete' producto.id %}" class="btn btn-danger btn-sm">
 			<i class="fa fa-trash"></i> Eliminar
 		</a>
-	
 		{% endif %}
 	</div>
 
