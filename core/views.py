@@ -15,6 +15,9 @@ def privacy(request):
 	return render(request, 'core/privacy.html')
 
 
+def nosotros(request):
+	return render(request, 'core/nosotros.html')
+
 # Luego de realizarse correctamente el registro del nuevo usuario,
 # creamos y asignamos un Perfil con los datos personales
 def verificar_perfil(request):

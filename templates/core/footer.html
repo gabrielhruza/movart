@@ -3,17 +3,16 @@
       <p class="footer-company-motto">MovArt</p>
 
       <p class="footer-links">
-        <a href="#">Home</a>
+          <a href="{% url 'tienda:tiendalist' %}">Tiendas</a>
         ·
-        <a href="#">Blog</a>
+        <a href="{% url 'tienda:prodlistall' %}">Productos</a>
         ·
-        <a href="#">Pricing</a>
+        <a href="{% url 'core:nosotros' %}">Nosotros</a>
         ·
-        <a href="#">About</a>
+        <a href="{% url 'core:privacy' %}">Políticas de privacidad</a>
         ·
-        <a href="#">Faq</a>
-        ·
-        <a href="#">Contact</a>
+        <a href="{% url 'evento:list' %}">Eventos</a>
+
       </p>
 
       <p class="footer-company-name">MovArt © 2019</p>

@@ -11,6 +11,7 @@ urlpatterns = [
 	path("", views.home, name="home"),
 	path("login/", views.login, name="login"),
 	path("privacy/", views.privacy, name="privacy"),
+	path("nosotros/", views.nosotros, name="nosotros"),
 	path("verificar_perfil/", views.verificar_perfil, name="verificar_perfil"),
 	path("actualizar_perfil/", views.actualizar_perfil, name="actualizar_perfil"),
 	path("ver_perfil/", views.ver_perfil, name="ver_perfil"),

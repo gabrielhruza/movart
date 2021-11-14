@@ -32,7 +32,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fa fa-info-circle"></i> nosotros</a>
+        <a class="nav-link" href="{% url 'core:nosotros' %}"><i class="fa fa-info-circle"></i> nosotros</a>
       </li>
 
       {% if user.is_authenticated %}
