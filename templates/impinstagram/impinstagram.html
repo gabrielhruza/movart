@@ -7,7 +7,8 @@
 
 
 <div class="row mt-5">
-    {% instagram_user_recent_media username %}
+
+    {#{% instagram_user_recent_media username %}#}
     {% for media in recent_media %}
         {% include 'impinstagram/prodcard.html' with shortcode=media.shortcode image=media.thumbnail_src %}
     {% empty %}
