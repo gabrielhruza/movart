@@ -13,9 +13,25 @@
             <div class="form-signin">
               <img src="{% static 'img/logo.png' %}" width="200" class="d-inline-block align-top">
               <p></p>
-              <a href="{% url 'social:begin' 'instagram' %}" class="btn btn-instagram active" role="button" aria-pressed="true">
-                Loguearse con Instagram
-              </a>
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                    </div>
+                    <div class="panel-body">
+                        <form role="form" action="{% url 'login' %}" method="post">
+                          {% csrf_token %}
+                            <fieldset>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Ingrese usuario" name="username" type="user" autofocus="">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Contraseña" name="password" type="password" value="">
+                                </div>
+                                <!-- Change this to a button or input when using this as a form -->
+                                <button type="submit" class="btn btn-sm btn-success">Ingresar</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
             </br></br>
               <a class="item" href="{% url 'core:privacy' %}">Políticas de privacidad</a>
             </div>

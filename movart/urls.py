@@ -10,6 +10,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('social-auth/', include('social_django.urls', namespace='social')),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
+    path('accounts/login/', auth_views.LoginView.as_view(template_name='core/login.html'), name='login'),
     path('messages/', include("pinax.messages.urls", namespace="pinax_messages")),
     path('', include('core.urls', namespace="core")),
     path('', include('tienda.urls', namespace="tienda")),
