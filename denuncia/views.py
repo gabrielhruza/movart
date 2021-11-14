@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.views.generic.edit import DeleteView
+from django.urls import reverse_lazy
 
 from .models    	import Denuncia
 from .forms     	import DenunciaForm
@@ -12,6 +14,10 @@ def dlist(request):
 	denuncias = Denuncia.objects.all()
 	return render(request, 'denuncia/list.html', {'denuncias' : denuncias})
 
+class DenunciaDelete(DeleteView):
+    model = Denuncia
+    success_url = '/'
+    template_name = 'denuncia/confirm_delete.html'  
 
 def dadd(request, pid):
 	if request.method == 'POST':
