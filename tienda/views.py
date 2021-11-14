@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views.generic.edit import DeleteView
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from pinax.messages.models import Message
 from core.models import Perfil
 from reputacion.models import Reputacion
@@ -121,4 +124,9 @@ def prodcons(request, pid):
 	else:
 		form = ProdconsForm()
 	return render(request, 'pinax/messages/message_create.html', {'form': form})
-	
+
+
+@method_decorator(login_required, name='dispatch')
+class ProductoDeleteView(DeleteView):
+    model = Producto
+    success_url = '/'

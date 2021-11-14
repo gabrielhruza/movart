@@ -1,6 +1,8 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path
 from . import views
+from .views import ProductoDeleteView
+
 
 app_name = 'tienda'
 
@@ -15,5 +17,6 @@ urlpatterns = [
 	path("prod/<pid>/edit/", views.prodedit, name="prodedit"),
 	path("prod/list/", views.prodlistall, name="prodlistall"),
 	path("prod/<pid>/cons/", views.prodcons, name="prodcons"),
+	path('prod/<pk>/delete/', ProductoDeleteView.as_view(), name="proddelete"),
 
 ]

@@ -58,6 +58,12 @@
 		<a role="button" href="{% url 'tienda:prodlist' producto.tienda.id %}" class="btn btn-light">
 			<i class="fa fa-times"></i> Volver
 		</a>		
+		{% if request.user.username == producto.tienda.usuario.username %}
+		<a role="button" href="{% url 'tienda:proddelete' producto.id %}" class="btn btn-danger">
+			<i class="fa fa-trash"></i> Eliminar
+		</a>
+	
+		{% endif %}
 	</div>
 
 	<div class="text-right mt-10">
